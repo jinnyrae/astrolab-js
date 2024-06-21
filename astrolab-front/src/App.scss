@@ -40,9 +40,9 @@ $btnColor: #874912;
 }
 html,
 body {
+  margin: 0 auto;
   background-color: $primeryColor;
   box-sizing: border-box;
-  width: 100%;
 }
 
 ul {
@@ -330,8 +330,11 @@ h3 {
 /////// panier //////
 .Panier {
   padding-bottom: 4rem;
-  font-size: 2rem;
+  font-size: 1.3rem;
   color: red;
+  @media (min-width: 1200px) {
+    font-size: 2rem;
+  }
 }
 /////////// Success ///////////
 .Success__p {
@@ -358,7 +361,9 @@ h3 {
     font-size: 1.1rem;
   }
 }
-////////// Home ///////////
+
+////////////////////  HOME //////////////////
+//////////Video Home ///////////
 .Video {
   margin: 0 auto;
   max-width: 90%;
@@ -427,50 +432,56 @@ h3 {
   background: rgba(0, 0, 0, 0.5);
   color: $primeryColor;
 }
-// image gallery ////
-section {
-  .Favorite {
-    border: none;
+// image gallery Home////
+ul {
+  @media (min-width: 768px) {
+    display: inline-grid;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
   .Home__gallery {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     width: 95%;
-    @media (min-width: 768px) {
-      margin-top: 2rem;
-      display: grid;
-      grid-template-rows: repeat(2, 50%);
-      grid-auto-flow: column;
-      column-gap: 1rem;
-      row-gap: 1rem;
+
+    .Home__gallery-photo {
+      width: 100%;
     }
-    @media (min-width: 1200px) {
-      display: flex;
-      flex-direction: row;
-    }
-    ul {
-      img {
-        width: 70%;
-        @media (min-width: 1200px) {
-          width: 90%;
-        }
-      }
-    }
+
     .Home__gallery-name {
       font-family: 'Lato';
       font-size: 1rem;
       color: $iconcolor;
-      margin-top: 1rem;
+      padding-bottom: 10px;
     }
     .Home__gallery-price {
       font-family: 'Roberto';
       color: $textColor;
       font-size: 0.9rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+  .Home__gallery-btn {
+    padding: 7px 4px;
+    background: $btnColor;
+    color: $primeryColor;
+    border: none;
+    border-radius: 2px;
+    margin-bottom: 1rem;
+    @media (min-width: 768px) {
+      margin-bottom: 2rem;
     }
   }
 }
+///// Reassurance ///////
 .Reassurance {
   display: flex;
   flex-direction: column;

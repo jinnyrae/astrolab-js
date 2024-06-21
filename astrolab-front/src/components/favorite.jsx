@@ -61,7 +61,7 @@ const Favorite = (props) => {
   }, []);
 
   return (
-    <li className="Card Favorite  ">
+    <li>
       {basketMsg && (
         <BasketMsg
           msg={`Vous avez ajouté ${quantity} produit dans le panier`}
@@ -73,14 +73,13 @@ const Favorite = (props) => {
       )}
       {error !== null && <p>{error}</p>}
       <div className="Home__gallery">
-        <li>
-          <img
-            className="Home__gallery-photo"
-            src={config.img_url + props.product.photo}
-          />
-        </li>
-        <li className="Home__gallery-name">{props.product.productName}</li>
-        <li className="Home__gallery-price">{props.product.price} € TTC</li>
+        <img
+          className="Home__gallery-photo"
+          src={config.img_url + props.product.photo}
+        />
+
+        <h4 className="Home__gallery-name">{props.product.productName}</h4>
+        <p className="Home__gallery-price">{props.product.price} € TTC</p>
       </div>
 
       <form
@@ -89,7 +88,7 @@ const Favorite = (props) => {
           OnBasketClick(basket.basket, props.product);
         }}
       >
-        <button>Ajouter au panier</button>
+        <button className="Home__gallery-btn">Ajouter au panier</button>
       </form>
     </li>
   );

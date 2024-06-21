@@ -311,6 +311,9 @@ $btnColor: #874912;
     padding-top: 1rem;
     padding-bottom: 1rem;
   }
+  p {
+    margin: 5px 4px;
+  }
   @media (min-width: 768px) {
     left: 28%;
     width: 40%;
@@ -320,7 +323,11 @@ $btnColor: #874912;
     left: 38%;
   }
   .Basket__msg-btn {
-    color: $iconcolor;
+    color: $primeryColor;
     margin-bottom: 1rem;
+    margin-top: 1rem;
+    padding: 5px 2px;
+    background: $btnColor;
+    border: none;
   }
 }
