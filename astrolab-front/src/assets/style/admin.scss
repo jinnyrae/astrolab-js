@@ -1,0 +1,302 @@
+$primeryColor: #fffcf2;
+$secondaryColor: #f9f3df;
+$textColor: #05074e;
+$iconcolor: #730814;
+$formBorderColor: $iconcolor solid 1px;
+$btnColor: #874912;
+@mixin formBorder {
+  border: $iconcolor solid 1px;
+  border-radius: 3px;
+}
+@mixin formTitle {
+  padding-bottom: 1rem;
+  font-family: 'Lato-light';
+}
+@mixin formError {
+  padding-bottom: 1rem;
+  color: red;
+}
+@font-face {
+  font-family: 'Lato-regular';
+  src: url('astrolab-front/src/assets/fonts/Lato-Regular.ttf') format('ttf');
+}
+@font-face {
+  font-family: 'Lato-light';
+  src: url('astrolab-front/src/assets/fonts/Lato-Light.ttf') format('ttf');
+}
+@font-face {
+  font-family: 'Roboto-regular';
+  src: url('astrolab-front/src/assets/fonts/Roboto-Regular.ttf') format('ttf');
+}
+@font-face {
+  font-family: 'Roboto-light';
+  src: url('astrolab-front/src/assets/fonts/Roboto-thin.ttf') format('ttf');
+}
+hr {
+  border: $primeryColor;
+}
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Lato-light' !important;
+  color: $iconcolor;
+  font-weight: 300;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.Admin {
+  padding-left: 2vmin;
+  padding-right: 2vmin;
+  margin-bottom: 2rem;
+  a {
+    text-decoration: none;
+    margin-top: 2rem;
+    color: $textColor;
+
+    &:hover {
+      color: $iconcolor;
+    }
+    p {
+      @include formError();
+    }
+  }
+
+  .Admin__links {
+    display: flex;
+    flex-direction: column;
+  }
+}
+.Admin__section {
+  margin: 0 auto;
+  margin-top: 4rem;
+  padding-bottom: 3rem;
+  width: 90%;
+
+  padding-left: 2vmin;
+  padding-right: 2vmin;
+  margin-bottom: 2rem;
+  @media (min-width: 768px) {
+    width: 70%;
+  }
+  .Admin__section-link {
+    display: flex;
+    flex-direction: column;
+    @include formBorder();
+    padding-bottom: 3rem;
+    a {
+      text-decoration: none;
+      margin-top: 2rem;
+      color: $textColor;
+      &:hover {
+        color: $iconcolor;
+      }
+    }
+  }
+}
+.retour {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 2rem;
+
+  .Admin__icon {
+    color: $iconcolor;
+    width: 3rem;
+    font-size: 1.5rem;
+  }
+  .Admin__links {
+    text-decoration: none;
+    color: $textColor;
+    &:hover {
+      color: $iconcolor;
+    }
+    @media (max-width: 768px) {
+      margin-top: 0;
+    }
+    @media (min-width: 1200px) {
+      margin-top: 0;
+    }
+  }
+}
+.Admin__table {
+  width: 95%;
+  margin: 0 auto 3rem;
+  border-collapse: collapse;
+  @media (min-width: 769px) {
+    width: 70%;
+  }
+  tr,
+  th,
+  td,
+  tbody {
+    @include formBorder();
+  }
+  th {
+    font-family: 'Roberto-regular';
+    color: $iconcolor;
+    font-size: 0.9rem;
+    font-weight: 200;
+    background-color: $secondaryColor;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    @media (min-width: 768px) {
+      font-size: 1.2rem;
+    }
+    @media (min-width: 1200px) {
+      font-size: 1.2rem;
+    }
+  }
+  td {
+    font-size: 0.8rem;
+    color: $textColor;
+
+    @media (min-width: 1200px) {
+      font-size: 1rem;
+    }
+  }
+  .Admin__table-img {
+    width: 4rem;
+    height: auto;
+  }
+  .action-btn {
+    background: $btnColor;
+    color: $primeryColor;
+    font-size: 0.7rem;
+    padding: 1vmin;
+    margin: 0.3rem;
+    border: none;
+    border-radius: 3px;
+    @media (min-width: 1200px) {
+      padding: 2vmin;
+    }
+  }
+  .Admin__table-tr {
+    td {
+      padding: 1rem;
+    }
+  }
+}
+
+////////  Edit Product //////////
+.Admin__add {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  @include formBorder();
+
+  input {
+    padding-left: 1rem;
+    margin: 0.7rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    @include formBorder();
+    @media (min-width: 768px) {
+      padding-top: 0.7rem;
+      padding-bottom: 0.7rem;
+    }
+  }
+  textarea {
+    padding-top: 0.5rem;
+    font-family: 'Roberto-light';
+    width: 87%;
+    height: 5rem;
+    margin: 1rem auto 1rem auto;
+
+    border-radius: 12px;
+    @include formBorder();
+    padding-left: 3%;
+    outline: none;
+    @media (min-width: 1200px) {
+      width: 90%;
+    }
+  }
+  button {
+    width: 60%;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin: auto;
+    background: $btnColor;
+    color: $primeryColor;
+    border: none;
+    border-radius: 5px;
+    @media (min-width: 768px) {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+  }
+  @media (min-width: 768px) {
+    width: 70%;
+  }
+  @media (min-width: 1200px) {
+    width: 50%;
+  }
+}
+/////////// orderDetails /////////
+.details {
+  th {
+    font-size: 0.7rem;
+    padding-top: 2vmin;
+    padding-bottom: 2vmin;
+    @media (min-width: 768px) {
+      font-size: 1rem;
+    }
+  }
+  td {
+    font-size: 0.7rem;
+    @media (min-width: 1200px) {
+      font-size: 1rem;
+    }
+  }
+}
+.handlerBtn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  button {
+    margin: 1vmin;
+    padding: 1vmin 2vmin 2vmin 1vmin;
+    background-color: $btnColor;
+    border: none;
+    border-radius: 3px;
+    color: $primeryColor;
+  }
+}
+.Order__client {
+  @include formBorder();
+  width: 80vw;
+  margin: 0 auto;
+  padding-bottom: 1rem;
+  .Order__p {
+    color: $textColor;
+    padding-bottom: 1rem;
+  }
+}
+//////// Admin - userTable ///////
+.user {
+  td {
+    font-size: 0.7rem;
+    @media (min-width: 768px) {
+      font-size: 1rem;
+    }
+  }
+  .User__table-btn {
+    font-size: 0.7rem;
+    width: 80%;
+    color: $iconcolor;
+    background: $primeryColor;
+    border: 1px solid $iconcolor;
+    border-radius: 3px;
+    margin: 2px;
+    cursor: pointer;
+    @media (min-width: 768px) {
+      font-size: 0.8rem;
+      width: 70%;
+      padding-top: 1vmin;
+      padding-bottom: 1vmin;
+    }
+  }
+}

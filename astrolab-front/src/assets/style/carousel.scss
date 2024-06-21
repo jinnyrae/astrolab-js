@@ -1,0 +1,51 @@
+$primeryColor: #fffcf2;
+$secondaryColor: #f9f3df;
+$textColor: #05074e;
+$iconcolor: #730814;
+$formBorderColor: $iconcolor solid 1px;
+$btnColor: #874912;
+@font-face {
+  font-family: 'Lato';
+  src: url('astrolab-front/src/assets/fonts/Lato-Regular.ttf') format('ttf');
+}
+@font-face {
+  font-family: 'Lato';
+  src: url('astrolab-front/src/assets/fonts/Lato-Light.ttf') format('ttf');
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('astrolab-front/src/assets/fonts/Roboto-Regular.ttf') format('ttf');
+}
+h2 {
+  margin-top: 2rem;
+  @media (min-width: 768px) {
+    margin-top: 3rem;
+  }
+  @media (min-width: 1200px) {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+  }
+}
+
+.slider-container {
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  @media (min-width: 768px) {
+    margin-bottom: 5rem;
+  }
+  @media (min-width: 1200px) {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 15rem;
+  }
+}
+.Slick-img {
+  margin: 0 auto;
+  width: 90%;
+  @media (min-width: 768px) {
+    width: 70%;
+  }
+  @media (min-width: 1200px) {
+    width: 80%;
+  }
+}

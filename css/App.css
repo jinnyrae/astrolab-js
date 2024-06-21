@@ -1,0 +1,135 @@
+@font-face {
+  font-family: "Lato";
+  src: url("astrolab-front/src/assets/fonts/Lato-Thin.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("astrolab-front/src/assets/fonts/Roboto-Regular.ttf") format("ttf");
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #f9f3df;
+  box-sizing: border-box;
+}
+
+.link {
+  color: #05074e !important;
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  font-family: "Lato", Arial, sans-serif;
+}
+
+.Header {
+  min-width: 100%;
+  width: 20%;
+  text-align: left;
+  border-bottom: 1px solid #730814;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Header__nav {
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.Header__nav__logo {
+  display: flex;
+  flex-direction: column;
+}
+
+.Header__logo--img {
+  height: 20rem;
+  width: 20rem;
+}
+
+.Header__logo--txt {
+  color: #730814;
+  padding-left: 3rem;
+  font-family: Lato;
+}
+
+.Header__link {
+  min-width: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.Header nav .Header__link--menu {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.Header__search--input {
+  height: 1.5rem;
+  border: #730814 1px solid;
+  background: #fffcf2;
+  border-radius: 27px;
+  padding: 15px;
+}
+
+.Header__search--btn {
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  position: absolute;
+  right: 1rem;
+  top: 0.5rem;
+}
+
+.Header__search--btn :focus {
+  outline: none !important;
+  box-shadow: none;
+}
+
+.Header__search {
+  position: relative;
+  display: inline-block;
+}
+
+.icon {
+  color: #730814;
+}
+
+.Header nav .Header__basket {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10rem;
+  width: 10rem;
+}
+
+.Header nav .Header__link--menu img {
+  width: 20%;
+}
+
+.Header__basket--icon {
+  padding-bottom: 2rem;
+}
+
+.Header nav .Header__link--menu a,
+.Header nav .Header__basket a {
+  text-decoration: none;
+  font-family: "Roboto";
+  color: black;
+  font-size: 18px;
+  padding: 15px;
+}
+
+/*# sourceMappingURL=App.css.map */

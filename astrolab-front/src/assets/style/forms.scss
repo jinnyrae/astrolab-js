@@ -1,0 +1,326 @@
+$primeryColor: #fffcf2;
+$secondaryColor: #f9f3df;
+$textColor: #05074e;
+$iconcolor: #730814;
+$formBorderColor: $iconcolor solid 1px;
+$btnColor: #874912;
+@mixin formBorder {
+  border: $iconcolor solid 1px;
+  border-radius: 5px;
+}
+@mixin formTitle {
+  padding-bottom: 1rem;
+  font-family: 'Lato-light';
+}
+@mixin formError {
+  padding-bottom: 1rem;
+  color: red;
+}
+/////////////////////////Login Form /////////////
+
+.Form {
+  margin: auto;
+  padding-top: 3rem;
+  .Form__title {
+    @include formTitle();
+  }
+  .Form__error {
+    @include formError();
+  }
+  .registerLink {
+    text-decoration: none;
+
+    color: $textColor;
+    &:hover {
+      color: $iconcolor;
+    }
+  }
+  .Form__log {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    padding: 1vmin;
+    @include formBorder();
+    @media (min-width: 768px) {
+      margin: 0 auto;
+      width: 60%;
+      margin-top: 2rem;
+    }
+    .Form__log--input {
+      padding: 0.7rem;
+      margin: 0.7rem;
+      @include formBorder();
+    }
+    .Form__btn {
+      color: $primeryColor;
+      font-size: medium;
+      margin-bottom: 1rem;
+      width: 70%;
+      align-self: center;
+      padding: 0.5rem;
+      padding-bottom: 0.6rem;
+      background-color: $btnColor;
+      @include formBorder();
+      @media (min-width: 768px) {
+        padding-top: 0.7rem;
+        padding-bottom: 1.7rem;
+        width: 50%;
+        margin-top: 1rem;
+        height: 2rem;
+      }
+    }
+  }
+}
+/////     Register form  ///////////
+.Register {
+  padding-top: 1rem;
+  margin: auto;
+  @media (min-width: 768px) {
+    width: 70%;
+  }
+  @media (min-width: 1200px) {
+    width: 50%;
+  }
+  .Register__title {
+    @include formTitle();
+  }
+  .Register__error {
+    @include formError();
+  }
+  .Register__form {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    @include formBorder();
+    input {
+      padding-top: 2vmin;
+      padding-bottom: 2vmin;
+      padding-left: 1vmin;
+      margin-top: 3vmin;
+      margin-bottom: 3vmin;
+      @include formBorder();
+      @media (min-width: 768px) {
+        padding-top: 3vmin;
+        padding-bottom: 3vmin;
+      }
+      @media (min-width: 1200px) {
+        padding-top: 2vmin;
+        padding-bottom: 2vmin;
+      }
+    }
+    .Register__submit {
+      margin: 0 auto;
+      width: 80%;
+      background-color: $btnColor;
+      margin-bottom: 1rem;
+      color: $primeryColor;
+
+      @media (min-width: 768px) {
+        width: 70%;
+      }
+    }
+  }
+}
+////// Profil form  /////////
+.Profil {
+  padding-top: 1rem;
+  margin: auto;
+  @media (min-width: 768px) {
+    width: 60%;
+  }
+  @media (min-width: 1200px) {
+    width: 50%;
+  }
+  .Profil__title {
+    @include formTitle();
+  }
+  .Profil__error {
+    @include formError();
+  }
+  .Profil__submit-delete {
+    @include formBorder();
+    background: $btnColor;
+    color: $primeryColor;
+    padding: 2vmin 2vmin 2vmin 2vmin;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .Profil__form {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    @include formBorder();
+    input {
+      padding-top: 2vmin;
+      padding-bottom: 2vmin;
+      padding-left: 1vmin;
+      margin-top: 3vmin;
+      margin-bottom: 3vmin;
+
+      @include formBorder();
+    }
+    .Profil__submit {
+      background-color: $btnColor;
+      color: $primeryColor;
+    }
+  }
+  .Profil__orders {
+    @include formBorder();
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+  }
+}
+.Profil__table {
+  border-collapse: collapse;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  padding: 1rem;
+
+  tr {
+    color: $iconcolor;
+    font-size: 0.7rem;
+  }
+}
+.Profile__table-body {
+  padding: 1vmin;
+  td {
+    color: $textColor;
+    padding: 0.5rem;
+    @include formBorder();
+  }
+}
+
+////////////////////payment Form  ////////////
+.Basket__form {
+  border-collapse: collapse;
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  @include formBorder();
+  @media (min-width: 768px) {
+    width: 80%;
+  }
+  @media (min-width: 1200px) {
+    width: 60%;
+  }
+  th {
+    @include formBorder();
+    background: $secondaryColor;
+    color: $iconcolor;
+    font-size: 0.6rem;
+    padding-top: 2vmin;
+    padding-bottom: 2vmin;
+    @media (min-width: 768px) {
+      font-size: 0.8rem;
+    }
+    @media (min-width: 1200px) {
+      font-size: 1rem;
+    }
+  }
+  td {
+    font-size: 0.6rem;
+    @include formBorder();
+    color: $textColor;
+    @media (min-width: 768px) {
+      font-size: 0.9rem;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+    @media (min-width: 1200px) {
+      font-size: 1rem;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+  }
+  .Panier__productName {
+    width: 5rem;
+    @media (min-width: 768px) {
+      width: 10rem;
+    }
+  }
+  .Panier__quantity {
+    width: 2rem;
+    @media (min-width: 768px) {
+      width: 4rem;
+    }
+  }
+  .Banier__btn-add {
+    width: 80%;
+    color: $textColor;
+    background: $primeryColor;
+    border: none;
+    margin: 1px;
+    cursor: pointer;
+  }
+  .Panier__icon {
+    color: $iconcolor;
+    border: none;
+    @media (min-width: 768px) {
+      font-size: 1rem;
+    }
+    @media (min-width: 1200px) {
+      font-size: 1.2rem;
+    }
+  }
+}
+.Panier__btn {
+  padding-top: 1vmin;
+  padding-bottom: 1vmin;
+  width: 30%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  @include formBorder();
+  background: $secondaryColor;
+  color: $textColor;
+  @media (min-width: 768px) {
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+  }
+  @media (min-width: 1200px) {
+    font-size: 0.9rem;
+  }
+}
+.pay {
+  cursor: pointer;
+  @media (min-width: 768px) {
+    width: 25%;
+  }
+  @media (min-width: 1200px) {
+    width: 20%;
+  }
+}
+.Basket__msg {
+  @include formBorder();
+  border-radius: 20px;
+  position: fixed;
+  top: 100px;
+  left: 18%;
+  z-index: 15;
+  background-color: $primeryColor;
+  text-align: center;
+  color: $textColor;
+  h4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  @media (min-width: 768px) {
+    left: 28%;
+    width: 40%;
+  }
+  @media (min-width: 1200px) {
+    width: 20%;
+    left: 38%;
+  }
+  .Basket__msg-btn {
+    color: $iconcolor;
+    margin-bottom: 1rem;
+  }
+}
