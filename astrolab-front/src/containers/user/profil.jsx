@@ -94,8 +94,12 @@ const Profil = (props) => {
       .then((res) => {
         if (res.status === 200) {
           const token = window.localStorage.getItem('3wa-project-token');
+
           let newUser = res.newUser;
+          console.log('user', newUser);
           newUser.token = token;
+          console.log('token', token);
+          setMsg(res.msg);
           dispatch(connectUser(newUser));
         } else {
           setError('Erreur de modification');
@@ -127,7 +131,7 @@ const Profil = (props) => {
       <h2 className="Profil__title">Mon Profil</h2>
       {error !== null && <p className="Profil__error">{error}</p>}
       {msg !== null && (
-        <p className="Form__error" style={{ color: 'red' }}>
+        <p className="Profil__title" style={{ color: 'red' }}>
           {msg}
         </p>
       )}

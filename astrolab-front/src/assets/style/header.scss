@@ -25,9 +25,43 @@ $btnColor: #874912;
   &__nav {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 
+    .Header__basket--icons {
+      a {
+        text-decoration: none;
+        font-family: 'Roboto';
+        color: $iconcolor;
+        padding: 10px;
+      }
+      .icon-text {
+        color: $textColor;
+        font-size: 0.5rem;
+        @media (max-width: 768px) {
+          font-size: 0.7rem;
+          margin-left: 0.4rem;
+        }
+
+        .icon {
+          font-size: 1.3rem;
+          color: $iconcolor;
+        }
+      }
+    }
+    .connected {
+      display: flex;
+      flex-direction: row;
+
+      .Header__icons {
+        color: $iconcolor;
+        display: flex;
+        flex-direction: column;
+      }
+      .icon-text {
+        font-size: 0.5;
+      }
+    }
     @media (max-width: 768px) {
       justify-content: space-between;
       padding-top: 5%;
@@ -45,8 +79,30 @@ $btnColor: #874912;
 
       .Header__logo {
         order: 2;
-        width: 100%;
       }
+    }
+  }
+  .Header__logo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: url('/Users/jinny/Documents/astrolab-js/astrolab-front/src/assets/logo/astrolab-svg.svg');
+    height: 15rem;
+    text-align: center;
+    position: relative;
+    background-size: cover;
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    @media (min-width: 1200px) {
+      width: 33%;
+    }
+    p {
+      color: $iconcolor;
+      font-family: 'Roboto';
+      font-size: 0.7rem;
+      text-align: center;
+      margin-top: 12rem;
     }
   }
 
@@ -55,11 +111,12 @@ $btnColor: #874912;
     .hamburger-lines {
       display: none;
     }
-
+    @media (min-width: 1200px) {
+      width: 40%;
+    }
     .navbar-container {
       margin: 0 auto;
       display: block;
-      background-color: transparent;
       z-index: 101; // navbar
 
       .menu-items {
@@ -149,19 +206,29 @@ $btnColor: #874912;
           width: 100vw;
           height: 100vh;
         }
+        .Header__logo {
+          z-index: -1;
+        }
+        .Header__basket--icons .connected .Header__icon {
+          z-index: -1;
+          display: none !important;
+        }
 
         .menu-items {
           z-index: 100;
           background: $secondaryColor;
-          height: 100vh;
-          width: 40vw;
-          margin-right: 4rem;
-          transform: translate(50%);
+          height: 147vh;
+          width: 80vw;
+          margin-right: 10rem;
+          transform: translate(3%);
           display: flex;
           flex-direction: column;
           transition: transform 0.5s ease-in-out;
           padding-right: 1rem;
-
+          @media (min-width: 768px) {
+            width: 60vw;
+            transform: translate(2%);
+          }
           .nav-link {
             text-underline-offset: 10px;
             display: block;
@@ -174,84 +241,12 @@ $btnColor: #874912;
             cursor: pointer;
             @media (min-width: 768px) {
               font-size: 1.5rem;
+              margin-left: 15rem;
             }
           }
         }
       }
     }
-  }
-
-  .Header__basket--icons {
-    z-index: 0;
-    max-height: 3rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    a {
-      text-decoration: none;
-      font-family: 'Roboto';
-      color: $textColor;
-      padding: 15px;
-    }
-
-    .icon-text {
-      padding: 0.5rem;
-      font-size: 0.5rem;
-      margin-left: 1rem;
-      position: relative;
-      visibility: hidden;
-      @media (max-width: 768px) {
-        font-size: 0.7rem;
-        margin-left: 0.4rem;
-      }
-
-      &:hover {
-        visibility: visible;
-      }
-      .icon {
-        font-size: 1.3rem;
-        visibility: visible;
-        color: $iconcolor;
-        position: absolute;
-        z-index: 1;
-      }
-    }
-    .basket {
-      padding-left: 3rem;
-      padding: 0.5rem;
-      margin-left: 2rem;
-      font-size: 1.3rem;
-      color: $iconcolor;
-    }
-    .Header__basket--span {
-      color: $textColor;
-      font-size: 1.4rem;
-    }
-  }
-  .connected {
-    display: flex;
-    justify-content: space-around;
-
-    @media (max-width: 768px) {
-    }
-    .icon-text {
-      font-size: 0.5;
-    }
-  }
-}
-
-.Header__logo {
-  display: flex;
-  flex-direction: column;
-  img {
-    height: 15rem;
-  }
-  p {
-    color: $iconcolor;
-    padding-left: 2rem;
-    margin-bottom: 1rem;
-    font-family: 'Roboto';
-    font-size: 1rem;
-    text-align: center;
   }
 }
 

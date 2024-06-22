@@ -73,8 +73,12 @@ h3 {
   display: inline-block;
   width: 40%;
 
+  @media (min-width: 768px) {
+    width: 90%;
+    margin: 1rem;
+  }
   @media (min-width: 1200px) {
-    width: 25%;
+    width: 90%;
   }
   .Card__title {
     color: $iconcolor;
@@ -110,19 +114,22 @@ h3 {
     font-size: 0.7rem;
   }
   button {
-    padding: 1vmin;
     margin: 2vmin;
-    background: $secondaryColor;
+    background: $btnColor;
     @include formBorder();
     .icon {
-      color: $textColor;
+      color: $primeryColor;
     }
   }
   input {
-    width: 90%;
+    width: 40%;
     @include formBorder();
     @media (min-width: 768px) {
-      width: 60%;
+      width: 30%;
+      height: 1.5rem;
+    }
+    @media (min-width: 1200px) {
+      width: 20%;
       height: 1.5rem;
     }
   }
@@ -233,10 +240,10 @@ h3 {
   }
 }
 .Details__btn {
-  color: $iconcolor;
+  color: $primeryColor;
   width: 2rem;
   height: 2rem;
-  background: $primeryColor;
+  background: $btnColor;
   @include formBorder();
 }
 .Details__panier {
@@ -244,7 +251,7 @@ h3 {
   color: $textColor;
 }
 //////////////////////////   Atelier ///////////
-.Atelier__section {
+.Page__section {
   margin: 0 auto;
   background: url('./src/assets/logo/atelier-montre.webp');
   width: 100vw;
@@ -273,7 +280,7 @@ h3 {
     margin-bottom: 5rem;
   }
 }
-.Atelier_p {
+.Page_p {
   margin-left: 2vmin;
   margin-right: 2vmin;
   padding: 1rem;
@@ -282,10 +289,12 @@ h3 {
   border-radius: 3px;
   color: $textColor;
   line-height: 1.5rem;
+  margin-bottom: 5rem;
   @media (min-width: 768px) {
     margin: 0 auto;
     width: 70%;
     line-height: 2rem;
+    margin-bottom: 5rem;
   }
   @media (min-width: 1200px) {
     margin: 0 auto;
@@ -320,11 +329,12 @@ h3 {
   @include formBorderTable();
   width: 60%;
   padding: 1rem;
-  border-radius: 25px;
-  color: $textColor;
-  background: $secondaryColor;
+  margin-bottom: 3rem;
+  border-radius: 3px;
+  color: $primeryColor;
+  background: $btnColor;
   @media (min-width: 1200px) {
-    width: 40%;
+    width: 30%;
   }
 }
 /////// panier //////
@@ -340,7 +350,10 @@ h3 {
 .Success__p {
   color: $textColor;
   padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-bottom: 4rem;
+  @media (min-width: 1200px) {
+    font-size: 1.3rem;
+  }
 }
 .Success__back {
   margin-top: 2rem;
@@ -354,15 +367,22 @@ h3 {
     &:hover {
       color: $iconcolor;
     }
+    @media (min-width: 1200px) {
+      font-size: 1.3rem;
+    }
   }
   .Success__icon {
     margin-right: 1rem;
     color: $iconcolor;
     font-size: 1.1rem;
+    @media (min-width: 1200px) {
+      font-size: 1.5rem;
+    }
   }
 }
 
 ////////////////////  HOME //////////////////
+
 //////////Video Home ///////////
 .Video {
   margin: 0 auto;
@@ -507,5 +527,38 @@ ul {
     margin-bottom: 1rem;
     @media (min-width: 768px) {
     }
+  }
+}
+///////// success /////////
+.Success__link {
+}
+////////////////////// A propos//////////
+.Page__section-nous {
+  margin: 0 auto;
+  background: url('./assets/logo/horloger-au-travail.avif');
+  width: 100vw;
+  height: 16rem;
+  background-size: cover;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  margin-left: 2vmin;
+  margin-right: 3vmin;
+  border-radius: 3px;
+  @media (min-width: 768px) {
+    margin: 0 auto;
+    height: 20rem;
+    width: 70%;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+  }
+  @media (min-width: 1200px) {
+    margin: 0 auto;
+    height: 30rem;
+    width: 60%;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
   }
 }

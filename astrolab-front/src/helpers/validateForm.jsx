@@ -55,13 +55,13 @@ export const validateFormInput = (label, type, value) => {
       break;
 
     case 'city':
-      const regCity = /^[a-z]*$/i;
+      const regCity = /^[a-z ]*$/i;
       if (regCity.test(value) === false) {
         return `Le champ ${label} doit contenir des lettres uniquement!`;
       }
       break;
     case 'country':
-      const regCountry = /^[a-z]*$/i;
+      const regCountry = /^[a-z ]*$/i;
       if (regCountry.test(value) === false) {
         return `Le champ ${label} doit contenir des lettres uniquement!`;
       }

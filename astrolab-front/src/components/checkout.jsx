@@ -50,7 +50,7 @@ const CheckOut = (props) => {
         console.log('dataaaa', data);
         updatePaymentStatus(data)
           .then((res) => {
-            console.log(res);
+            console.log('ffffssss', res);
             if (res.status === 200) {
               setSuccessRedirect(true);
             }

@@ -286,8 +286,8 @@ h4 {
   .User__table-btn {
     font-size: 0.7rem;
     width: 80%;
-    color: $iconcolor;
-    background: $primeryColor;
+    color: $primeryColor;
+    background: $btnColor;
     border: 1px solid $iconcolor;
     border-radius: 3px;
     margin: 2px;
@@ -297,6 +297,9 @@ h4 {
       width: 70%;
       padding-top: 1vmin;
       padding-bottom: 1vmin;
+    }
+    @media (min-width: 768px) {
+      width: 50%;
     }
   }
 }

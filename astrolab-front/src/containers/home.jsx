@@ -1,6 +1,5 @@
 import InfinitText from '../components/infinitText';
 import SimpleSlider from '../components/carousel';
-import { config } from '../../config';
 import Video from '/Users/jinny/Documents/astrolab-js/astrolab-front/public/images/Manufacture-horloge-Complications-online-video-cutter.com-1.mp4';
 import image1 from '../../public/images//Warranty-300x300.png';
 import image2 from '../../public/images/free-300x300.png';
@@ -13,12 +12,9 @@ const Home = () => {
   const [favorite, setFavorite] = useState([]);
   const getFavorites = (favo) => {
     const data = { favorite: favo };
-    console.log('Request Data:', data);
     favoriteProducts(data)
       .then((res) => {
-        console.log('Full Response:', res);
         if (res.status === 200) {
-          console.log('Data:', res.result);
           setFavorite(res.result);
         }
       })
@@ -55,24 +51,6 @@ const Home = () => {
         </ul>
       )}
 
-      {/* <div className="Home__gallery">
-        {favorite.length > 0 ? (
-          favorite.map((item, index) => (
-            <ul key={index}>
-              <li>
-                <img
-                  className="Home__gallery-photo"
-                  src={config.img_url + item.photo}
-                />
-              </li>
-              <li className="Home__gallery-name">{item.productName}</li>
-              <li className="Home__gallery-price">{item.price} € TTC</li>
-            </ul>
-          ))
-        ) : (
-          <p>No favorite products found.</p>
-        )}
-      </div> */}
       <div className="Reassurance">
         <div>
           <img src={image1} />

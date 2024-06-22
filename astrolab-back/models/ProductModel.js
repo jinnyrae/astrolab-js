@@ -17,7 +17,7 @@ class ProductModel {
   }
   // Get one product
   static getOneProduct(id) {
-    console.log(id);
+    console.log('one product', id);
     return db
       .query('SELECT * FROM Products WHERE id=?', [id])
       .then((res) => {

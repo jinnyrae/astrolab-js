@@ -6,7 +6,6 @@ module.exports = (app, db) => {
   // Route pour récuperer tout les produits
   app.get('/api/v1/Products/all', async (req, res) => {
     const products = await productModel.getAllProducts();
-
     if (products.code) {
       res.json({ status: 500, msg: 'Une erreur est survenue!' });
     } else {
@@ -55,7 +54,6 @@ module.exports = (app, db) => {
     withAuthAdmin,
     async (req, res, next) => {
       const product = await productModel.getOneProduct(req.params.id); // Recupération du produit à supprimer pour pouvoir supprimer l'image
-
       if (product.code) {
         res.json({ status: 500, msg: 'Server Error' });
       } else {
@@ -84,7 +82,7 @@ module.exports = (app, db) => {
   // Route pour le coup de coeur home page
   app.post('/api/v1/Products/favorite', async (req, res) => {
     const favorite = await productModel.getFavorite(req.body.favorite);
-    console.log('favv', favorite);
+
     if (favorite.code) {
       res.json({ status: 500, msg: 'Server Error!' });
     } else {

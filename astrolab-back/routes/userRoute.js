@@ -37,7 +37,7 @@ module.exports = (app, db) => {
   // Route de connexion d'un utilisateur
   app.post('/api/v1/Users/login', async (req, res) => {
     const check = await userModel.getUserByEmail(req.body.email);
-
+    console.log('User :', check);
     if (check.code) {
       res.json({ status: 500, msg: 'Erreur de vérification!' }); //Internal Server Error
     } else {
@@ -65,7 +65,7 @@ module.exports = (app, db) => {
               const connect = await userModel.updateConnexion(check[0].id); // mettre à jour la date de connexion
 
               if (connect.code) {
-                res.json({ status: 500, msg: 'Erreur de connexion' }); //Internal Server Error
+                res.json({ status: 500, msg: 'Erreur de connexion' });
                 return;
               } else {
                 const user = {
@@ -119,7 +119,12 @@ module.exports = (app, db) => {
           country: getUser.country,
           role: getUser.role,
         };
-        res.json({ status: 200, result: user, getUser: updatedUser });
+        res.json({
+          status: 200,
+          result: user,
+          getUser: updatedUser,
+          msg: 'Votre Profil a été Modifié!',
+        });
       }
     }
   });

@@ -66,13 +66,11 @@ export function deleteProduct(id) {
     });
 }
 export function favoriteProducts(data) {
-  console.log('favorite', data);
   return axios
     .post(`${config.api_url}/api/v1/Products/favorite`, data, {
       headers: { 'x-access-token': token },
     })
     .then((res) => {
-      console.log('res.data', res.data);
       return res.data;
     })
     .catch((error) => {

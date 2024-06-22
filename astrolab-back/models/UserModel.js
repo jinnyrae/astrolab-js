@@ -49,9 +49,11 @@ class UserModel {
   }
   // get user avec son id
   static getUserById(id) {
+    console.log('idd', id);
     return db
       .query('SELECT * FROM Users WHERE id= ? ', [id])
       .then((res) => {
+        console.log('Database response:', res);
         return res;
       })
       .catch((error) => {

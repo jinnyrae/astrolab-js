@@ -2,9 +2,9 @@ const Atelier = () => {
   return (
     <section>
       <h2>No Atelier</h2>
-      <div className="Atelier__section"></div>
+      <div className="Page__section"></div>
 
-      <p className="Atelier_p">
+      <article className="Page_p">
         Vous rêvez de voir de très près ce qu’il se passe dans un mouvement de
         montre, de comprendre comment fonctionne son mécanisme ?<hr /> Nos
         Ateliers Horlogerie sont faits pour vous !<hr /> L’initiation est
@@ -22,7 +22,7 @@ const Atelier = () => {
         places limitées à 6 par Atelier. <hr />
         N’attendez pas davantage pour vous glisser dans la peau d’un véritable
         horloger!
-      </p>
+      </article>
     </section>
   );
 };

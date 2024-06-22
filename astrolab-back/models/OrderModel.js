@@ -56,7 +56,6 @@ class OrderModel {
   }
   // Modifier le status d'une commande
   static updateOrderStatus(id, status) {
-    console.log('ici', id, status);
     return db
       .query('UPDATE Orders SET status = ? WHERE id = ?', [status, id])
       .then((res) => {
@@ -94,6 +93,20 @@ class OrderModel {
       .query(
         'SELECT OrderDetails.id , OrderDetails.quantity,OrderDetails.createTimeStamp, OrderDetails.orderId, total, productName FROM OrderDetails INNER JOIN Products ON Products.id = OrderDetails.productId WHERE orderId = ? ',
         [orderId],
+      )
+      .then((res) => {
+        return res;
+      })
+      .catch((error) => {
+        return error;
+      });
+  }
+  /// Get details d'une commande par utilisateur
+  static userOrderDetails(userId) {
+    return db
+      .query(
+        'SELECT Orders.userId , NOW(), status, totalSum, productName, photo FROM Orders INNER JOIN OrderDetails ON OrderDetails.orderId ON OrderDetails.orderId INNER JOIN Products ON Products.id = OrderDetails.productId WHERE userId = ?',
+        [userId],
       )
       .then((res) => {
         return res;

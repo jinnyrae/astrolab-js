@@ -40,7 +40,7 @@ const OrdersTable = () => {
           <tbody>
             {orders.length > 0 ? (
               orders.map((item) => {
-                if (item.status === 'unpaid' || item.status === 'cancelled') {
+                if (item.status === 'unpaid') {
                   return (
                     <tr className="Admin__table-tr" key={item.id}>
                       <td>
@@ -66,7 +66,7 @@ const OrdersTable = () => {
         </table>
       </div>
       <div className="Admin">
-        <h3>En cours de traitement</h3>
+        <h3>Payés</h3>
         <table className="Admin__table">
           <thead>
             <tr>
@@ -79,7 +79,7 @@ const OrdersTable = () => {
           <tbody>
             {orders.length > 0 ? (
               orders.map((item) => {
-                if (orders.status === 'paid') {
+                if (item.status === 'payed') {
                   return (
                     <tr className="Admin__table-tr" key={item.id}>
                       <td>
@@ -89,7 +89,6 @@ const OrdersTable = () => {
                       </td>
                       <td>{item.totalSum} Euros</td>
                       <td>
-                        {' '}
                         {moment(item.createTimeStamp).format('DD-MM-YYYY')}
                       </td>
                       <td>{item.status}</td>
@@ -129,7 +128,6 @@ const OrdersTable = () => {
                       </td>
                       <td>{item.totalSum} Euros</td>
                       <td>
-                        {' '}
                         {moment(item.createTimeStamp).format('DD-MM-YYYY')}
                       </td>
                       <td>{item.status}</td>

@@ -36,13 +36,6 @@ const Header = () => {
       <header className="Header">
         <nav className="Header__nav">
           <div className="Header__logo">
-            <Link to="/">
-              <img
-                className="Header__logo--img"
-                src={logo}
-                alt="logo Astrolab"
-              />
-            </Link>
             <p className="Header__logo--txt">
               Dieu a inventé le temps, l'homme a inventé la montre
             </p>
@@ -84,13 +77,11 @@ const Header = () => {
           {/* //user déconnecté */}
           {user.IsLogged === false ? (
             <div className="Header__basket--icons ">
-              <Link className="icon-text" to="/register">
-                Sign up
+              <Link to="/register">
                 <FaUserPlus className="icon" />
               </Link>
 
-              <Link className="icon-text" to="/login">
-                Se connecter
+              <Link to="/login">
                 <FaAmericanSignLanguageInterpreting className="icon" />
               </Link>
               <Link className="icon-text basket" to="/basket">
@@ -104,27 +95,36 @@ const Header = () => {
             // user connecté
             <div className="Header__basket--icons connected">
               {user.userInfo.role === 'admin' && (
-                <Link className="icon-text" to="/admin">
-                  {user.userInfo.firstName} {user.userInfo.lastName}
-                  <RiAdminFill className="icon" />
+                <div className="Header__icons">
+                  <Link to="/admin">
+                    <RiAdminFill className="icon" />
+                    <p className="icon-text">
+                      {user.userInfo.firstName} {user.userInfo.lastName}
+                    </p>
+                  </Link>
+                </div>
+              )}
+              <div className="Header__icons">
+                <Link to="/profil">
+                  <FaUserLarge className="icon" />
+                  <p className="icon-text">
+                    {user.userInfo.firstName} {user.userInfo.lastName}
+                  </p>
                 </Link>
-              )}
-
-              <Link className="icon-text" to="/profil">
-                Mon Profil
-                <FaUserLarge className="icon" />
-              </Link>
-              <a className="icon-text" href="#" onClick={logout}>
-                Log out
-                <RiLogoutCircleRLine className="icon" />
-              </a>
-              <div></div>
-              <Link className=" basket" to="/basket">
-                <FaBasketShopping className="icon" />
-              </Link>
-              {basket.basket.length > 0 && (
-                <span className="icon-text">{basket.basket.length}</span>
-              )}
+              </div>
+              <div className="Header__icons">
+                <Link to="/" onClick={logout}>
+                  <RiLogoutCircleRLine className="icon" />
+                </Link>
+              </div>
+              <div className="Header__icons">
+                <Link to="/basket">
+                  {basket.basket.length > 0 && (
+                    <span className="icon-text">{basket.basket.length}</span>
+                  )}
+                  <FaBasketShopping className="icon" />
+                </Link>
+              </div>
             </div>
           )}
         </nav>

@@ -45,12 +45,9 @@ const Favorite = (props) => {
   };
   const getFavorites = (favo) => {
     const data = { favorite: favo };
-    console.log('Request Data:', data);
     favoriteProducts(data)
       .then((res) => {
-        console.log('Full Response:', res);
         if (res.status === 200) {
-          console.log('Data:', res.result);
           setFavorite(res.result);
         }
       })
