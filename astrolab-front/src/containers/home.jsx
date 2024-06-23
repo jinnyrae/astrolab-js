@@ -1,17 +1,21 @@
+import { useEffect, useState } from 'react';
 import InfinitText from '../components/infinitText';
 import SimpleSlider from '../components/carousel';
 import Video from '/Users/jinny/Documents/astrolab-js/astrolab-front/public/images/Manufacture-horloge-Complications-online-video-cutter.com-1.mp4';
+
 import image1 from '../../public/images//Warranty-300x300.png';
 import image2 from '../../public/images/free-300x300.png';
 import image3 from '../../public/images/refund-300x300.png';
 import image4 from '../../public/images/free-300x300.png';
 import { favoriteProducts } from '../api/product';
-import { useEffect, useState } from 'react';
 import Favorite from '../components/favorite';
+
 const Home = () => {
   const [favorite, setFavorite] = useState([]);
+
   const getFavorites = (favo) => {
     const data = { favorite: favo };
+
     favoriteProducts(data)
       .then((res) => {
         if (res.status === 200) {
@@ -72,4 +76,5 @@ const Home = () => {
     </section>
   );
 };
+
 export default Home;

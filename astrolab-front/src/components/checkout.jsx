@@ -17,6 +17,7 @@ const CheckOut = (props) => {
       setError('Error de terminal de paiement!');
       return;
     }
+
     const data = {
       email: user.userInfo.email,
       orderId: props.orderId,
@@ -27,6 +28,7 @@ const CheckOut = (props) => {
     if (paymentAuth.status === 500) {
       setError('Echec de paiment');
     }
+
     const secret = paymentAuth.client_secret; // si paiment, stripe retourne une clé
 
     const payment = await stripe.confirmCardPayment(secret, {
@@ -38,6 +40,7 @@ const CheckOut = (props) => {
         },
       },
     });
+
     if (payment.error) {
       setError(payment.error.message);
     } else {
@@ -58,9 +61,11 @@ const CheckOut = (props) => {
       }
     }
   };
+
   if (successRedirect) {
     return <Navigate to={'/success'} />;
   }
+
   return (
     <section>
       {error !== null && <p>{error}</p>}

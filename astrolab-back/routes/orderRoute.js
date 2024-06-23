@@ -1,8 +1,8 @@
+require('dotenv').config();
+
 const withAuthAdmin = require('../withAuthAdmin');
 const withAuth = require('../withAuth');
 const Stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-
-require('dotenv').config();
 
 module.exports = (app, db) => {
   const orderModel = require('../models/OrderModel')(db);
@@ -82,7 +82,7 @@ module.exports = (app, db) => {
   });
 
   // Route pour modifier le status de paiement
-  app.put('/api/v1/Orders/status', withAuthAdmin, async (req, res) => {
+  app.put('/api/v1/Orders/status', withAuth, async (req, res) => {
     const orderStatus = await orderModel.updateOrderStatus(
       req.body.id,
       req.body.status,

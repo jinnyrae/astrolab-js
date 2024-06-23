@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
-import logo from '../assets/logo/astrolab-svg.svg';
+import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectUser, logoutUser } from '../slices/userSlice.jsx';
 import { selectBasket } from '../slices/basketSlice.jsx';
@@ -11,14 +10,18 @@ import { RiAdminFill } from 'react-icons/ri';
 import { FaAmericanSignLanguageInterpreting } from 'react-icons/fa';
 import { FaUserPlus } from 'react-icons/fa6';
 const Header = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const basket = useSelector(selectBasket);
+
   const [redirect, setRedirect] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
   const menuToggle = () => {
     setMenuOpen(!menuOpen);
   };
+
   //deconnexion d'un user
   const logout = () => {
     //annulation du token
@@ -29,8 +32,9 @@ const Header = () => {
   };
 
   if (redirect) {
-    return <Navigate to="/" />;
+    navigate('/', { replace: true });
   }
+
   return (
     <>
       <header className="Header">

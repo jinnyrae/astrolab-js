@@ -28,9 +28,10 @@ function App() {
   return (
     <div className="App">
       <Header />
+
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/" element={<RequireAuth child={Home} admin={false} />} /> */}
+
         <Route
           path="/admin"
           element={<RequireAuth child={Admin} admin={true} />}
