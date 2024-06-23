@@ -47,10 +47,9 @@ const CheckOut = (props) => {
           id: props.orderId,
           status: 'payed',
         };
-        console.log('dataaaa', data);
+
         updatePaymentStatus(data)
           .then((res) => {
-            console.log('ffffssss', res);
             if (res.status === 200) {
               setSuccessRedirect(true);
             }

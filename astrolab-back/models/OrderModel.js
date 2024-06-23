@@ -19,6 +19,7 @@ class OrderModel {
   }
   // Ajouter un order details
   static addOrderDetails(orderId, product) {
+    console.log('details', orderId, product);
     const total = parseInt(product.cartQuantity) * product.price;
     return db
       .query(
@@ -78,8 +79,12 @@ class OrderModel {
   }
   // Get tout les commande d'un utilisateur
   static getAllOrdersByUser(userId) {
+    console.log('me!', userId);
     return db
-      .query('SELECT * FROM Orders WHERE userId= ?', [userId])
+      .query(
+        "SELECT Orders.id AS orderId, NOW() AS orderDate,Orders.status, Orders.totalSum, GROUP_CONCAT(Products.productName SEPARATOR ', ') AS productNames, GROUP_CONCAT(Products.photo SEPARATOR ', ') AS productPhotos FROM Orders INNER JOIN OrderDetails ON Orders.id = OrderDetails.orderId INNER JOIN Products ON Products.id = OrderDetails.productId WHERE Orders.userId = ? GROUP BY Orders.id",
+        [userId],
+      )
       .then((res) => {
         return res;
       })
@@ -91,7 +96,7 @@ class OrderModel {
   static allOrderDetails(orderId) {
     return db
       .query(
-        'SELECT OrderDetails.id , OrderDetails.quantity,OrderDetails.createTimeStamp, OrderDetails.orderId, total, productName FROM OrderDetails INNER JOIN Products ON Products.id = OrderDetails.productId WHERE orderId = ? ',
+        'SELECT OrderDetails.id , OrderDetails.quantity,OrderDetails.createTimeStamp, OrderDetails.orderId, total, photo ,productName FROM OrderDetails INNER JOIN Products ON Products.id = OrderDetails.productId WHERE orderId = ? ',
         [orderId],
       )
       .then((res) => {
@@ -101,18 +106,5 @@ class OrderModel {
         return error;
       });
   }
-  /// Get details d'une commande par utilisateur
-  static userOrderDetails(userId) {
-    return db
-      .query(
-        'SELECT Orders.userId , NOW(), status, totalSum, productName, photo FROM Orders INNER JOIN OrderDetails ON OrderDetails.orderId ON OrderDetails.orderId INNER JOIN Products ON Products.id = OrderDetails.productId WHERE userId = ?',
-        [userId],
-      )
-      .then((res) => {
-        return res;
-      })
-      .catch((error) => {
-        return error;
-      });
-  }
+  static userOrder;
 }

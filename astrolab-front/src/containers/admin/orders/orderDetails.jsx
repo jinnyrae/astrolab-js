@@ -7,7 +7,7 @@ import {
 } from '../../../api/order';
 import moment from 'moment';
 import { IoPlayBackOutline } from 'react-icons/io5';
-
+import { config } from '../../../../config';
 export const OrderDetails = ({ params }) => {
   const [order, setOrder] = useState(null);
   const [orderDetails, setOrderDetails] = useState([]);
@@ -72,6 +72,7 @@ export const OrderDetails = ({ params }) => {
         <table className="Admin__table details">
           <thead>
             <tr>
+              <th>Photo</th>
               <th>Produit</th>
               <th>Quantité </th>
               <th>Total</th>
@@ -86,6 +87,13 @@ export const OrderDetails = ({ params }) => {
                 orderDetails.map((item) => {
                   return (
                     <tr key={item.id}>
+                      <td>
+                        <img
+                          className="orderImg"
+                          src={config.img_url + item.photo}
+                          alt={`${item.productName}`}
+                        />
+                      </td>
                       <td>{item.productName}</td>
                       <td>{item.quantity}</td>
                       <td>{item.total}</td>

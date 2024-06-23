@@ -59,7 +59,7 @@ const ProductCard = (props) => {
           <p className="Card__p">{props.product.brand}</p>
           <img
             src={config.img_url + props.product.photo}
-            alt={`${props.productName}`}
+            alt={`${props.product.productName}`}
           />
           <p className="Card__price">prix: {props.product.price} €</p>
         </div>

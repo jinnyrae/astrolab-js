@@ -3,7 +3,7 @@ import { updateUser } from '../../api/user';
 import { selectUser, connectUser, logoutUser } from '../../slices/userSlice';
 import { validateFormInput } from '../../helpers/validateForm';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllUsers, deleteUser } from '../../api/user';
+import { deleteUser } from '../../api/user';
 import { getUserOrders } from '../../api/order';
 import { config } from '../../../config';
 import moment from 'moment';
@@ -118,8 +118,11 @@ const Profil = (props) => {
   }, [user]);
   // les commandes d'un utilisateur
   useEffect(() => {
-    getUserOrders(user.userInfo.id)
+    const data = user.userInfo.id;
+    console.log(data);
+    getUserOrders(data)
       .then((res) => {
+        console.log('profil', res);
         if (res.status === 200) {
           setUserOrder(res.result);
         }
@@ -202,32 +205,41 @@ const Profil = (props) => {
         />
         <input className="Profil__submit" type="submit" name="Enregistrer" />
       </form>
-      <div className="Profil__orders">
-        <h3>Mes Commandes</h3>
-        <table className="Profil__table">
-          <thead>
-            <tr>
-              <th>Commande ID</th>
-              <th>Date</th>
-              <th>Status</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody className="Profile__table-body">
-            {userOrder.length > 0 &&
-              userOrder.map((item) => {
-                return (
-                  <tr key={item.id} className="Profile__table-row">
-                    <td>{item.id}</td>
-                    <td>{moment(item.createTimeStamp).format('DD-MM-YYYY')}</td>
-                    <td>{item.status}</td>
-                    <td>{item.totalSum} €</td>
-                  </tr>
-                );
-              })}
-          </tbody>
-        </table>
-      </div>
+
+      <h3>Mes Commandes</h3>
+      <table className="Profil__table">
+        <thead>
+          <tr>
+            <th>Commande ID</th>
+            <th>Photo</th>
+            <th>Produit</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody className="Profile__table-body">
+          {userOrder.length > 0 &&
+            userOrder.map((item, index) => {
+              return (
+                <tr key={index} className="Profile__table-row">
+                  <td>{item.orderId}</td>
+                  <td>
+                    <img
+                      className="orderImg"
+                      src={config.img_url + item.productPhotos}
+                      alt={`Image de ${item.productNames}`}
+                    />
+                  </td>
+                  <td>{item.productNames}</td>
+                  <td>{moment(item.createTimeStamp).format('DD-MM-YYYY')}</td>
+                  <td>{item.status}</td>
+                  <td>{item.totalSum} €</td>
+                </tr>
+              );
+            })}
+        </tbody>
+      </table>
     </section>
   );
 };

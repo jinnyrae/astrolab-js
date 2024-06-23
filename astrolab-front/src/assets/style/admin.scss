@@ -247,22 +247,45 @@ h4 {
   }
   td {
     font-size: 0.7rem;
+
     @media (min-width: 1200px) {
       font-size: 1rem;
     }
+  }
+}
+.orderImg {
+  width: 3rem;
+  height: auto;
+  @media (min-width: 879px) {
+    width: 4rem;
+  }
+  @media (min-width: 1200px) {
+    width: 5rem;
   }
 }
 .handlerBtn {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  border: none !important;
   button {
+    font-size: 0.5rem;
     margin: 1vmin;
     padding: 1vmin 2vmin 2vmin 1vmin;
     background-color: $btnColor;
     border: none;
     border-radius: 3px;
     color: $primeryColor;
+    @media (min-width: 768px) {
+      font-size: 0.8rem;
+      width: 60%;
+      margin: 0 auto;
+      margin-top: 3px;
+      margin-bottom: 3px;
+    }
+    @media (min-width: 1200px) {
+      font-size: 1rem;
+    }
   }
 }
 .Order__client {

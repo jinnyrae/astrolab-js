@@ -29,7 +29,7 @@ module.exports = (app, db) => {
             insertOrderId,
             product,
           );
-
+          console.log('the route', orderDetails);
           if (orderDetails.code) {
             res.json({
               status: 500,
@@ -111,13 +111,17 @@ module.exports = (app, db) => {
   // Rout pour récupere les commande par un utilisateur
   app.get('/api/v1/Orders/user/:id', withAuth, async (req, res) => {
     const orders = await orderModel.getAllOrdersByUser(req.params.id);
-
+    console.log('::::', req.params.id);
+    console.log('orders', orders);
     if (orders.code) {
       res.json({ status: 500, msg: 'Erreur de récuperation des commandes!' });
+    } else if (!orders || orders.length === 0) {
+      res.json({ status: 404, msg: 'Pas de commandes trouvé' });
     } else {
       res.json({ status: 200, result: orders });
     }
   });
+
   // Get une command détaillée
   app.get('/api/v1/Orders/details/:id', withAuth, async (req, res) => {
     const order = await orderModel.getOneOrder(req.params.id);
