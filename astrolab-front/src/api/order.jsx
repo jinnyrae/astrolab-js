@@ -18,7 +18,6 @@ export function insertOrder(data) {
 }
 // Gestion de paiement
 export function checkPayment(data) {
-  console.log('ahkkk', data);
   return axios
     .post(`${config.api_url}/api/v1/Orders/payment`, data, {
       headers: { 'x-access-token': token },
@@ -32,7 +31,6 @@ export function checkPayment(data) {
 }
 // Modification du status d'une commande
 export function updatePaymentStatus(data) {
-  console.log('/°°°/', data);
   return axios
     .put(`${config.api_url}/api/v1/Orders/status`, data, {
       headers: { 'x-access-token': token },

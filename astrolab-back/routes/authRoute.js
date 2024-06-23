@@ -6,7 +6,7 @@ module.exports = (app, db) => {
   const userModel = require('../models/UserModel')(db);
   app.get('/api/v1/auth/checkToken', withAuth, async (req, res) => {
     const user = await userModel.getUserById(req.id);
-    console.log('User response:', user);
+
     if (user.code) {
       res.json({ status: 500, msg: 'Server Error!' });
     } else {

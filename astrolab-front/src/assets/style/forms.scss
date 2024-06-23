@@ -174,31 +174,37 @@ $btnColor: #874912;
       color: $primeryColor;
     }
   }
-  .Profil__orders {
-    @include formBorder();
-    width: 80%;
-    margin: 0 auto;
-    margin-bottom: 2rem;
-    margin-top: 2rem;
-  }
 }
 .Profil__table {
   border-collapse: collapse;
+  width: 95%;
   margin: 0 auto;
-  margin-bottom: 2rem;
-  padding: 1rem;
+  margin-bottom: 4rem;
 
   tr {
     color: $iconcolor;
     font-size: 0.7rem;
   }
+  th {
+    @include formBorder();
+    padding-top: 0.5rem;
+  }
 }
 .Profile__table-body {
-  padding: 1vmin;
   td {
     color: $textColor;
-    padding: 0.5rem;
+    padding: 0.2rem;
     @include formBorder();
+    .orderImg {
+      width: 3rem;
+      height: auto;
+      @media (min-width: 879px) {
+        width: 4rem;
+      }
+      @media (min-width: 1200px) {
+        width: 5rem;
+      }
+    }
   }
 }
 
