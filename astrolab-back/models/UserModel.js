@@ -49,11 +49,9 @@ class UserModel {
   }
   // get user avec son id
   static getUserById(id) {
-    console.log('idd', id);
     return db
       .query('SELECT * FROM Users WHERE id= ? ', [id])
       .then((res) => {
-        console.log('Database response:', res);
         return res;
       })
       .catch((error) => {
@@ -119,7 +117,6 @@ class UserModel {
   }
   //Modification du role d'un user
   static updateUserRole(req, id) {
-    console.log('bbbb', req.body, id);
     return db
       .query('UPDATE Users SET role= ? WHERE id= ?', [req.body.role, id])
       .then((res) => {

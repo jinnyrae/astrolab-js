@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { IoPlayBackOutline } from 'react-icons/io5';
-import { getAllUsers, updateUserRole, userById } from '../../../api/user';
+import { getAllUsers, updateUserRole } from '../../../api/user';
 import { useState, useEffect } from 'react';
 
 const UserTable = () => {
