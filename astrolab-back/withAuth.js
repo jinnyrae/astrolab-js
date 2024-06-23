@@ -3,6 +3,7 @@ const secret = 'w3a-project-pour-la-formation-fullstack-javaScript';
 
 const withAuth = (req, res, next) => {
   const token = req.headers['x-access-token'];
+
   if (!token) {
     // Token introuvable
     res.json({ status: 401, msg: 'Token introuvable!' });
