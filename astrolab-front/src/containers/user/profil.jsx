@@ -7,7 +7,7 @@ import { deleteUser } from '../../api/user';
 import { getUserOrders } from '../../api/order';
 import { config } from '../../../config';
 import moment from 'moment';
-const Profil = (props) => {
+const Profil = () => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
   const [firstName, setFirstName] = useState('');
@@ -21,9 +21,7 @@ const Profil = (props) => {
   const [msg, setMsg] = useState('');
   const [userOrder, setUserOrder] = useState([]);
 
-  const handleDeleteUser = (id) => {
-    // fonction pour supprimer le compte
-    setMsg('');
+  const handleDeleteUser = () => {
     deleteUser(user.userInfo.id)
       .then((res) => {
         if (res.status === 200) {
@@ -36,51 +34,62 @@ const Profil = (props) => {
   };
 
   const handleProfil = (e) => {
+    const firstNameError = validateFormInput('Prenom', 'firstName', firstName);
+
     e.preventDefault();
     setError(null);
-    const firstNameError = validateFormInput('Prenom', 'firstName', firstName);
+
     if (firstNameError !== true) {
       setError(firstNameError);
       return;
     }
+
     const lastNameError = validateFormInput('Nom', 'lastName', lastName);
     if (lastNameError !== true) {
       setError(lastNameError);
       return;
     }
+
     const phoneError = validateFormInput('Phone', 'phone', phone);
     if (phoneError !== true) {
       setError(phoneError);
       return;
     }
-    const ddressLine1Error = validateFormInput(
+
+    const addressLine1Error = validateFormInput(
       'Adresse',
       'addressLine1',
       addressLine1,
     );
-    if (ddressLine1Error !== true) {
-      setError(ddressLine1Error);
+
+    if (addressLine1Error !== true) {
+      setError(addressLine1Error);
       return;
     }
+
     const addressLine2Error = validateFormInput(
       'Adresse',
       'addressLine2',
       addressLine2,
     );
+
     if (addressLine2Error !== true) {
       setError(addressLine2Error);
       return;
     }
+
     const cityError = validateFormInput('Ville', 'city', city);
     if (cityError !== true) {
       setError(cityError);
       return;
     }
+
     const countryError = validateFormInput('Pays', 'country', country);
     if (countryError !== true) {
       setError(countryError);
       return;
     }
+
     const data = {
       firstName: firstName,
       lastName: lastName,
@@ -90,15 +99,14 @@ const Profil = (props) => {
       city: city,
       country: country,
     };
+
     updateUser(data, user.userInfo.id)
       .then((res) => {
         if (res.status === 200) {
           const token = window.localStorage.getItem('3wa-project-token');
-
           let newUser = res.newUser;
-          console.log('user', newUser);
+
           newUser.token = token;
-          console.log('token', token);
           setMsg(res.msg);
           dispatch(connectUser(newUser));
         } else {
@@ -116,19 +124,19 @@ const Profil = (props) => {
     setCity(user.userInfo.city);
     setCountry(user.userInfo.country);
   }, [user]);
-  // les commandes d'un utilisateur
+
   useEffect(() => {
     const data = user.userInfo.id;
-    console.log(data);
+
     getUserOrders(data)
       .then((res) => {
-        console.log('profil', res);
         if (res.status === 200) {
           setUserOrder(res.result);
         }
       })
       .catch((error) => console.log(error));
   }, []);
+
   return (
     <section className="Profil">
       <h2 className="Profil__title">Mon Profil</h2>
@@ -143,7 +151,7 @@ const Profil = (props) => {
         onClick={() => handleDeleteUser()}
       >
         {' '}
-        Supprimer mon Compt
+        Supprimer mon Compte
       </button>
 
       <form className="Profil__form" onSubmit={handleProfil}>

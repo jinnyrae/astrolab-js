@@ -19,7 +19,6 @@ class OrderModel {
   }
   // Ajouter un order details
   static addOrderDetails(orderId, product) {
-    console.log('details', orderId, product);
     const total = parseInt(product.cartQuantity) * product.price;
     return db
       .query(
@@ -79,7 +78,6 @@ class OrderModel {
   }
   // Get tout les commande d'un utilisateur
   static getAllOrdersByUser(userId) {
-    console.log('me!', userId);
     return db
       .query(
         "SELECT Orders.id AS orderId, NOW() AS orderDate,Orders.status, Orders.totalSum, GROUP_CONCAT(Products.productName SEPARATOR ', ') AS productNames, GROUP_CONCAT(Products.photo SEPARATOR ', ') AS productPhotos FROM Orders INNER JOIN OrderDetails ON Orders.id = OrderDetails.orderId INNER JOIN Products ON Products.id = OrderDetails.productId WHERE Orders.userId = ? GROUP BY Orders.id",

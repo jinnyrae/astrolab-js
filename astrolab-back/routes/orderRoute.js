@@ -1,7 +1,9 @@
 const withAuthAdmin = require('../withAuthAdmin');
 const withAuth = require('../withAuth');
-require('dotenv').config();
 const Stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+
+require('dotenv').config();
+
 module.exports = (app, db) => {
   const orderModel = require('../models/OrderModel')(db);
   const userModel = require('../models/UserModel')(db);
@@ -11,12 +13,15 @@ module.exports = (app, db) => {
   app.post('/api/V1/Orders/add', withAuth, async (req, res) => {
     let totalSum = 0;
     const newOrder = await orderModel.addOrder(req.body.userId, totalSum);
+
     if (newOrder.code) {
       res.json({ status: 500, msg: "échec d'enregistrer la commande!" });
     } else {
       const insertOrderId = newOrder.insertId; // le id ajouter dand la BD
+
       req.body.basket.forEach(async (product) => {
         const addedProducts = await productModel.getOneProduct(product.id); // les produits ajoutés au panier
+
         if (addedProducts.code) {
           res.json({
             status: 500,
@@ -24,12 +29,11 @@ module.exports = (app, db) => {
           });
         } else {
           const safePrice = parseFloat(addedProducts.price); // safePrice du produit dans le panier = le prix dans la DB
-
           const orderDetails = await orderModel.addOrderDetails(
             insertOrderId,
             product,
           );
-          console.log('the route', orderDetails);
+
           if (orderDetails.code) {
             res.json({
               status: 500,
@@ -68,6 +72,7 @@ module.exports = (app, db) => {
         receipt_email: req.body.email, // confirmation envoyé par mail
         payment_method_types: ['card'],
       });
+
       res.json({
         stauts: 200,
         msg: 'Paiement effectué',
@@ -92,15 +97,18 @@ module.exports = (app, db) => {
   // Route: tous les commandes
   app.get('/api/v1/Orders/all', withAuthAdmin, async (req, res) => {
     const orders = await orderModel.getAllOrders();
+
     if (orders.code) {
       res.json({ status: 500, msg: 'Erreur de récuperation des commandes!' });
     } else {
       res.json({ status: 200, result: orders });
     }
   });
+
   //Route get une commande
   app.get('/api/v1/Orders/:id', withAuthAdmin, async (req, res) => {
     const orders = await orderModel.getOneOrder(req.params.id);
+
     if (orders.code) {
       res.json({ status: 500, msg: 'Erreur de récuperation de commande!' });
     } else {
@@ -108,11 +116,10 @@ module.exports = (app, db) => {
     }
   });
 
-  // Rout pour récupere les commande par un utilisateur
+  // Route pour récupere les commande par un utilisateur
   app.get('/api/v1/Orders/user/:id', withAuth, async (req, res) => {
     const orders = await orderModel.getAllOrdersByUser(req.params.id);
-    console.log('::::', req.params.id);
-    console.log('orders', orders);
+
     if (orders.code) {
       res.json({ status: 500, msg: 'Erreur de récuperation des commandes!' });
     } else if (!orders || orders.length === 0) {
@@ -125,10 +132,12 @@ module.exports = (app, db) => {
   // Get une command détaillée
   app.get('/api/v1/Orders/details/:id', withAuth, async (req, res) => {
     const order = await orderModel.getOneOrder(req.params.id);
+
     if (order.code) {
       res.json({ status: 500, msg: 'Erreur de récuperation de commande!' });
     } else {
       const user = await userModel.getUserById(order[0].userId);
+
       if (user.code) {
         res.json({
           status: 500,
@@ -143,6 +152,7 @@ module.exports = (app, db) => {
           country: user[0].country,
         };
         const detailedOrder = await orderModel.allOrderDetails(req.params.id);
+
         if (detailedOrder.code) {
           res.json({ status: 500, msg: 'Erreur de récuperation de détails!' });
         } else {
