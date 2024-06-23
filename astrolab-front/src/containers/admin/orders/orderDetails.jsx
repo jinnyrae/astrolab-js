@@ -34,7 +34,6 @@ export const OrderDetails = ({ params }) => {
     updatePaymentStatus({ id: params.id, status: newStatus })
       .then((res) => {
         if (res.status === 200) {
-          console.log('status', res);
           findOrder();
         }
       })

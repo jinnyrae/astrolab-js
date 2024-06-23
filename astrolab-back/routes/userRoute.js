@@ -37,7 +37,7 @@ module.exports = (app, db) => {
   // Route de connexion d'un utilisateur
   app.post('/api/v1/Users/login', async (req, res) => {
     const check = await userModel.getUserByEmail(req.body.email);
-    console.log('User :', check);
+
     if (check.code) {
       res.json({ status: 500, msg: 'Erreur de vérification!' }); //Internal Server Error
     } else {
@@ -171,7 +171,7 @@ module.exports = (app, db) => {
   //Route pour modifier le role d'un utilisateur
   app.put('/api/v1/Users/role/:id', withAuthAdmin, async (req, res, next) => {
     const userRole = await userModel.updateUserRole(req, req.params.id);
-    console.log(userRole);
+
     if (userRole.code) {
       res.json({ status: 500, msg: "Le role n'a pas pu être modifier" });
     } else {

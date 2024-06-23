@@ -16,7 +16,6 @@ const Action = () => {
       .then((res) => {
         if (res.status === 200) {
           setMsg(res.msg);
-          console.log('msg', res.msg);
           displayAllProducts(res.result)
             .then((responce) => {
               if (responce.status === 200) {

@@ -13,7 +13,6 @@ const Favorite = (props) => {
   const [favorite, setFavorite] = useState([]);
   const [basketMsg, setBasketMsg] = useState(false);
   const OnBasketClick = (actuelBasket, newProduct) => {
-    console.log('actu', actuelBasket, 'new', newProduct);
     let theQuantity = quantity === '' ? 1 : parseInt(quantity); //Set quantity à 1 par default
     // Verfier la quantité , qu'elle existe et positive
     if (isNaN(theQuantity) || theQuantity <= 0) {
@@ -21,7 +20,6 @@ const Favorite = (props) => {
     } else {
       setError(null);
       let newBasket = JSON.parse(JSON.stringify(actuelBasket));
-      console.log('new basket1', newBasket, 'actuel1', actuelBasket);
       const verifyProduct = newBasket.findIndex(
         (item) => item.id === newProduct.id,
       ); // verifier si le produit exsiste dans le panier

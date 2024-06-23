@@ -1,73 +1,70 @@
 import { useState, useEffect } from 'react';
 import { config } from '../../config.js';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { getOneProduct } from '../api/product';
 import BasketMsg from '../components/basketMsg';
 import { AiOutlinePlusCircle } from 'react-icons/ai';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectBasket, updateBasket } from '../slices/basketSlice';
 import { IoPlayBackOutline } from 'react-icons/io5';
-const Details = (props) => {
+
+const Details = () => {
   const basket = useSelector(selectBasket);
   const dispatch = useDispatch();
+  const { id } = useParams();
+
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState('');
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
   const [basketMsg, setBasketMsg] = useState(false);
+
   const OnBasketClick = (actuelBasket, newProduct) => {
-    console.log('actu', actuelBasket, 'new', newProduct);
-    console.log(product);
     let theQuantity = quantity === '' ? 1 : parseInt(quantity); //Set quantity à 1 par default
+
     // Verfier la quantité , qu'elle est positive
     if (isNaN(theQuantity) || theQuantity <= 0) {
       setError('Veuillez saisir un chiffre');
     } else {
-      setError(null);
       let newBasket = JSON.parse(JSON.stringify(actuelBasket || []));
-      console.log('new basket1', newBasket, 'actuel1', actuelBasket);
+
       // verifier si le produit exsiste dans le panier
       if (newProduct) {
         const verifyProduct = newBasket.findIndex(
           (item) => item.id === newProduct.id,
         );
-        console.log('verif', verifyProduct);
+
         if (verifyProduct === -1) {
           // produit inexistant
           let theProduct = JSON.parse(JSON.stringify(newProduct));
-          console.log('new', newProduct);
           theProduct.cartQuantity = theQuantity;
           let theBasket = [...newBasket, theProduct];
-          console.log('the basket', theBasket);
           let localStorageBasket = JSON.stringify(theBasket);
+
           window.localStorage.setItem('astrolab-basket', localStorageBasket);
           dispatch(updateBasket(theBasket));
         } else {
           // Le produit existe dans le panier
           newBasket[verifyProduct].cartQuantity = +theQuantity;
           let localStorageBasket = JSON.stringify(newBasket);
+
           window.localStorage.setItem('astrolab-basket', localStorageBasket);
           dispatch(updateBasket(newBasket));
         }
         setBasketMsg(true);
-      } else {
-        console.error('newProduct is undefined');
       }
       setBasketMsg(true);
     }
   };
+
   useEffect(() => {
-    getOneProduct(props.params.id)
+    getOneProduct(id)
       .then((res) => {
-        console.log('Product Response:', res);
         if (res.status === 200) {
           setProduct(res.result);
-          console.log('reees', res.result);
-        } else {
-          console.log('Echec:', res.status);
         }
       })
       .catch((error) => console.log(error));
-  }, [props.params.id]);
+  }, [id]);
 
   return (
     <section className="Product__details">
@@ -75,7 +72,7 @@ const Details = (props) => {
       {basketMsg && (
         <BasketMsg
           msg={`Vous avez ajouté: ${quantity} produit(s) dans votre panier!`}
-          onClickClose={(e) => {
+          onClickClose={() => {
             setBasketMsg(false);
             setQuantity('');
           }}

@@ -46,13 +46,11 @@ function App() {
         <Route path="/apropos" element={<Apropos />} />
         <Route path="/cgv" element={<Cgv />} />
         <Route path="/pdc" element={<Pdc />} />
+        <Route path="/details/:id" element={<Details />} />
+
         <Route
           path="/basket"
           element={<RequireAuth child={Basket} admin={false} />}
-        />
-        <Route
-          path="/details/:id"
-          element={<RequireAuth child={Details} admin={false} />}
         />
         <Route
           path="/payment/:orderId"
@@ -91,6 +89,7 @@ function App() {
           path="/admin/userTable"
           element={<RequireAuth child={UserTable} admin={true} />}
         />
+
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
 

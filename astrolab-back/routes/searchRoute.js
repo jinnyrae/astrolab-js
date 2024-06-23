@@ -65,31 +65,4 @@ module.exports = (app, db) => {
       });
     }
   });
-  // app.get('/api/v1/search', async (req, res) => {
-  //   const productsBySearch = await searchModel.getProductBySearch(
-  //     req.body.mouvement ||
-  //       req.body.brand ||
-  //       req.body.gender ||
-  //       req.body.productName,
-  //   );
-
-  //   if (productsBySearch.code) {
-  //     res.json({ status: 500, msg: 'Server Error!' });
-  //   } else if (productsBySearch.length === 0) {
-  //     res.json({ status: 404, msg: 'Products not found!' });
-  //   } else {
-  //     res.json({
-  //       status: 200,
-  //       productsBySearch: productsBySearch,
-  //       msg: 'Voilà!',
-  //     });
-  //   }
-  // });
 };
-
-// const productName = await req.query.productName;
-//     console.log(req.params.key);
-//     // Do something with the query parameters
-//     console.log(productName);
-//     res.send(`product Name`);
-// res.send(`product Name: ${productName}`
