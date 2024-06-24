@@ -17,14 +17,7 @@ if (!process.env.HOST) {
 } else {
   config = require('./config-online');
 }
-//////////////////////////////
-//For testing backend (dossier views+ index html)
-app.set('view engine', 'ejs');
-app.get('/', (req, res) => {
-  // pour tester le backend sur index html
-  res.render('index.ejs');
-});
-////////////////////////////////
+
 // Connexion à la DB
 const host = process.env.HOST_DB || config.db.host;
 const database = process.env.DATABASE_DB || config.db.database;

@@ -15,6 +15,7 @@ module.exports = (app, db) => {
       }
     }
   });
+
   //Route pour afficher un produit par gender
   app.get('/api/v1/search/gender', async (req, res) => {
     const productsByGender = req.query.gender;
@@ -32,6 +33,7 @@ module.exports = (app, db) => {
       });
     }
   });
+
   app.get('/api/v1/search/brand', async (req, res) => {
     const productsByBrand = req.query.brand;
     const products = await searchModel.getProductByBrand(productsByBrand);
@@ -48,6 +50,7 @@ module.exports = (app, db) => {
       });
     }
   });
+
   app.get('/api/v1/search/mouvement', async (req, res) => {
     const productsByMouvement = req.query.mouvement;
     const products =

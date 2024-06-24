@@ -1,9 +1,8 @@
 const withAuth = require('../withAuth');
-//const jwt = require('jsonwebtoken');
-//const secret = 'w3a-project-pour-la-formation-fullstack-javaScript';
 
 module.exports = (app, db) => {
   const userModel = require('../models/UserModel')(db);
+
   app.get('/api/v1/auth/checkToken', withAuth, async (req, res) => {
     const user = await userModel.getUserById(req.id);
 

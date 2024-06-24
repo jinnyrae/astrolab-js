@@ -9,7 +9,7 @@ const RequireAuth = ({ child, admin }) => {
   const params = useParams(); // params de la route
 
   const user = useSelector(selectUser);
-  const dispatch = useDispatch(); // Dispatch les action dans le store
+  const dispatch = useDispatch();
   const Child = child; //la page concernée
 
   const [redirect, setRedirect] = useState(false);
@@ -37,7 +37,6 @@ const RequireAuth = ({ child, admin }) => {
             // token valable
             let theUser = res.user; //recupération de user
             theUser.token = token; //theUser ajouté au token
-
             dispatch(connectUser(theUser)); // User se connecte
           }
         })

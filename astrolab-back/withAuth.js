@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
-const secret = 'w3a-project-pour-la-formation-fullstack-javaScript';
+require('dotenv').config();
+const secret = process.env.JWT_SECRET;
 
 const withAuth = (req, res, next) => {
   const token = req.headers['x-access-token'];

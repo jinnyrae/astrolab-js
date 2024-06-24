@@ -14,18 +14,16 @@ const Header = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const basket = useSelector(selectBasket);
-
   const [redirect, setRedirect] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-
   const menuToggle = () => {
     setMenuOpen(!menuOpen);
   };
-
   //deconnexion d'un user
   const logout = () => {
     //annulation du token
     window.localStorage.removeItem('3wa-project-token');
+    window.localStorage.removeItem('astrolab-basket');
     //on réinitialise le store de redux
     dispatch(logoutUser());
     setRedirect(true);
@@ -34,7 +32,6 @@ const Header = () => {
   if (redirect) {
     navigate('/', { replace: true });
   }
-
   return (
     <>
       <header className="Header">

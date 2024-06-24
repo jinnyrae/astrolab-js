@@ -24,6 +24,7 @@ export function getOneProduct(id) {
       return error;
     });
 }
+
 // Ajouter un produit
 export function insertProduct(data) {
   const token = window.localStorage.getItem('3wa-project-token');
@@ -39,6 +40,7 @@ export function insertProduct(data) {
       return error;
     });
 }
+
 // Modifier un produit
 export function updateProduct(data, id) {
   const token = window.localStorage.getItem('3wa-project-token');
@@ -54,6 +56,7 @@ export function updateProduct(data, id) {
       return error;
     });
 }
+
 // Supprimer un produit
 export function deleteProduct(id) {
   const token = window.localStorage.getItem('3wa-project-token');
@@ -69,13 +72,10 @@ export function deleteProduct(id) {
       return error;
     });
 }
-export function favoriteProducts(data) {
-  const token = window.localStorage.getItem('3wa-project-token');
 
+export function favoriteProducts(data) {
   return axios
-    .post(`${config.api_url}/api/v1/Products/favorite`, data, {
-      headers: { 'x-access-token': token },
-    })
+    .post(`${config.api_url}/api/v1/Products/favorite`, data)
     .then((res) => {
       return res.data;
     })

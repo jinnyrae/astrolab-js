@@ -13,7 +13,7 @@ module.exports = (app, db) => {
     // Verification de l'existance de l'utilisateur
     const check = await userModel.getUserByEmail(req.body.email);
     if (check.code) {
-      res.json({ status: 500, msg: "Echec de trouver l'tilisateur" }); //Internal Server Error
+      res.json({ status: 500, msg: "Echec de trouver l'tilisateur" });
     } else {
       if (check.length > 0) {
         // Il y a un email, l'utilisateur exsiste dèja
@@ -24,7 +24,7 @@ module.exports = (app, db) => {
         // L'email n'existe pas, l'utilisateur peut créer un compt
         const user = await userModel.insertOneUser(req);
         if (user.code) {
-          res.json({ status: 500, msg: "Erreur d'enregistrement" }); //Internal Server Error
+          res.json({ status: 500, msg: "Erreur d'enregistrement" });
         } else {
           res.json({
             status: 200,
@@ -34,6 +34,7 @@ module.exports = (app, db) => {
       }
     }
   });
+
   // Route de connexion d'un utilisateur
   app.post('/api/v1/Users/login', async (req, res) => {
     const check = await userModel.getUserByEmail(req.body.email);

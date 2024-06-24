@@ -17,6 +17,7 @@ class OrderModel {
         return error;
       });
   }
+
   // Ajouter un order details
   static addOrderDetails(orderId, product) {
     const total = parseInt(product.cartQuantity) * product.price;
@@ -43,6 +44,7 @@ class OrderModel {
         return error;
       });
   }
+
   //Get une commande par son id
   static getOneOrder(id) {
     return db
@@ -54,6 +56,7 @@ class OrderModel {
         return error;
       });
   }
+
   // Modifier le status d'une commande
   static updateOrderStatus(id, status) {
     return db
@@ -65,6 +68,7 @@ class OrderModel {
         return error;
       });
   }
+
   // Get tout les commande
   static getAllOrders() {
     return db
@@ -76,6 +80,7 @@ class OrderModel {
         return error;
       });
   }
+
   // Get tout les commande d'un utilisateur
   static getAllOrdersByUser(userId) {
     return db
@@ -90,6 +95,7 @@ class OrderModel {
         return error;
       });
   }
+
   // Get les details d'une commande
   static allOrderDetails(orderId) {
     return db

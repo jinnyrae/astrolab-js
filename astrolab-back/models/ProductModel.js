@@ -15,6 +15,7 @@ class ProductModel {
         return error;
       });
   }
+
   // Get one product
   static getOneProduct(id) {
     return db
@@ -54,6 +55,7 @@ class ProductModel {
         return error;
       });
   }
+
   // Modifier un produit
   static updateProduct(req, id) {
     return db
@@ -82,6 +84,7 @@ class ProductModel {
         return error;
       });
   }
+
   //Supprimer un produit
   static deleteProduct(id) {
     return db

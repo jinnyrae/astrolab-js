@@ -14,6 +14,7 @@ class SearchModel {
         return error;
       });
   }
+
   // Afficher les produit par genre
   static getProductByGender(gender) {
     return db
@@ -25,6 +26,7 @@ class SearchModel {
         return error;
       });
   }
+
   // Afficher les produits par marque
   static getProductByBrand(brand) {
     return db
@@ -36,6 +38,7 @@ class SearchModel {
         return error;
       });
   }
+
   // Afficher les produits par mouvement
   static getProductByMouvement(mouvement) {
     return db
@@ -47,6 +50,7 @@ class SearchModel {
         return error;
       });
   }
+
   // static getProductBySearch(mouvement, brand, gender, productName) {
   //   return db
   //     .query(
