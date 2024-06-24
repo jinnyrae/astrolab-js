@@ -10,6 +10,7 @@ const Action = () => {
   const dispatch = useDispatch();
   const [montre, setMontre] = useState([]);
   const [msg, setMsg] = useState('');
+
   const handleDeleteProduct = (id) => {
     setMsg('');
     deleteProduct(id)

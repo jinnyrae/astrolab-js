@@ -6,16 +6,20 @@ $iconcolor: #730814;
 $formBorderColor: $iconcolor solid 1px;
 $btnColor: #874912;
 @font-face {
-  font-family: 'Lato';
-  src: url('astrolab-front/src/assets/fonts/Lato-Regular.ttf') format('ttf');
+  font-family: 'Lato-regular';
+  src: url('../fonts/Lato-Regular.ttf') format('ttf');
 }
 @font-face {
-  font-family: 'Lato';
-  src: url('astrolab-front/src/assets/fonts/Lato-Light.ttf') format('ttf');
+  font-family: 'Lato-light';
+  src: url('../fonts/Lato-Light.ttf') format('ttf');
 }
 @font-face {
-  font-family: 'Roboto';
-  src: url('astrolab-front/src/assets/fonts/Roboto-Regular.ttf') format('ttf');
+  font-family: 'Roboto-regular';
+  src: url('../fonts/Roboto-Regular.ttf') format('ttf');
+}
+@font-face {
+  font-family: 'Roboto-light';
+  src: url('../fonts/Roboto-thin.ttf') format('ttf');
 }
 .Header {
   display: flex;

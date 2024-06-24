@@ -18,19 +18,19 @@ $btnColor: #874912;
 }
 @font-face {
   font-family: 'Lato-regular';
-  src: url('astrolab-front/src/assets/fonts/Lato-Regular.ttf') format('ttf');
+  src: url('../fonts/Lato-Regular.ttf') format('ttf');
 }
 @font-face {
   font-family: 'Lato-light';
-  src: url('astrolab-front/src/assets/fonts/Lato-Light.ttf') format('ttf');
+  src: url('../fonts/Lato-Light.ttf') format('ttf');
 }
 @font-face {
   font-family: 'Roboto-regular';
-  src: url('astrolab-front/src/assets/fonts/Roboto-Regular.ttf') format('ttf');
+  src: url('../fonts/Roboto-Regular.ttf') format('ttf');
 }
 @font-face {
   font-family: 'Roboto-light';
-  src: url('astrolab-front/src/assets/fonts/Roboto-thin.ttf') format('ttf');
+  src: url('../fonts/Roboto-thin.ttf') format('ttf');
 }
 hr {
   border: $primeryColor;

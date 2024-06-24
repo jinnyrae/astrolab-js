@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import InfinitText from '../components/infinitText';
 import SimpleSlider from '../components/carousel';
-import Video from '/Users/jinny/Documents/astrolab-js/astrolab-front/public/images/Manufacture-horloge-Complications-online-video-cutter.com-1.mp4';
+import Video from '../../public/images/Manufacture-horloge-Complications-online-video-cutter.com-1.mp4';
 
 import image1 from '../../public/images//Warranty-300x300.png';
 import image2 from '../../public/images/free-300x300.png';

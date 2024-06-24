@@ -7,7 +7,7 @@ let localStorageBasket = JSON.parse(
 if (localStorageBasket === null) {
   localStorageBasket = [];
 }
-// Fonction pour calculer lr montant total s'il y a un panier dans le local storage
+// Fonction pour calculer le montant total s'il y a un panier dans le local storage
 const calculateTotalSum = (basket) => {
   let price = 0;
   basket.forEach((product) => {

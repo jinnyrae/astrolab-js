@@ -5,6 +5,7 @@ import { emptyBasket } from '../slices/basketSlice';
 import { IoPlayBackOutline } from 'react-icons/io5';
 const Success = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     window.localStorage.removeItem('astrolab-basket');
     dispatch(emptyBasket());

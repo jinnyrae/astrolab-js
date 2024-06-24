@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import { insertUser } from '../../api/user';
 import { validateFormInput } from '../../helpers/validateForm';
-const Register = (props) => {
+
+const Register = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -14,6 +15,7 @@ const Register = (props) => {
   const [country, setCountry] = useState('');
   const [redirect, setRedirect] = useState(false);
   const [error, setError] = useState(null);
+
   const handleRegister = (e) => {
     e.preventDefault();
     setError(null);

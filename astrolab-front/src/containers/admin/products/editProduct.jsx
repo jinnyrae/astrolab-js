@@ -3,7 +3,6 @@ import { config } from '../../../../config';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectUser } from '../../../slices/userSlice';
-import { Navigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { IoPlayBackOutline } from 'react-icons/io5';
 import {
@@ -16,6 +15,7 @@ import { uploadProducts } from '../../../slices/productSlice';
 const EditProduct = (props) => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
+
   const [productName, setProductName] = useState('');
   const [brand, setBrand] = useState('');
   const [gender, setGender] = useState('');
@@ -31,6 +31,7 @@ const EditProduct = (props) => {
   const [photoAlt, setPhotoAlt] = useState('');
   const [error, setError] = useState(null);
   const [msg, setMsg] = useState('');
+
   const modifyProduct = (data) => {
     updateProduct(data, props.params.id)
       .then((res) => {

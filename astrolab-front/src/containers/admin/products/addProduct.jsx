@@ -10,6 +10,7 @@ import { IoPlayBackOutline } from 'react-icons/io5';
 export const AddProduct = () => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
+
   const [productName, setProductName] = useState('');
   const [brand, setBrand] = useState('');
   const [gender, setGender] = useState('');

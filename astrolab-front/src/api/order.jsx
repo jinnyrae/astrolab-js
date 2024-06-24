@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { config } from '/Users/jinny/Documents/astrolab-js/astrolab-front/config.js';
+import { config } from '../../config';
 
 // Ajouter une commande
 export function insertOrder(data) {

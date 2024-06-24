@@ -5,10 +5,12 @@ import { updateBasket, emptyBasket, selectBasket } from '../slices/basketSlice';
 import { insertOrder } from '../api/order';
 import { FaRegTrashCan } from 'react-icons/fa6';
 import { Navigate } from 'react-router-dom';
+
 const Basket = () => {
   const basket = useSelector(selectBasket);
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
+
   const [redirect, setRedirect] = useState(false);
   const [orderId, setOrderId] = useState(null);
   const [loginRedirect, setLoginRedirect] = useState(false);

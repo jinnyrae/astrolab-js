@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 
 const UserTable = () => {
   const [allUsers, setAllUsers] = useState([]);
+
   const handleStatus = (newStatus, id) => {
     updateUserRole(id, { role: newStatus })
       .then((res) => {
