@@ -232,6 +232,22 @@ h3 {
     height: 1.5rem;
     @include formBorder();
   }
+  .Details__links {
+    text-decoration: none;
+    color: $textColor;
+    margin-left: 1rem;
+
+    &:hover {
+      color: $iconcolor;
+    }
+    @media (max-width: 768px) {
+      margin-top: 0;
+    }
+    @media (min-width: 1200px) {
+      margin-top: 0;
+      font-size: 1rem;
+    }
+  }
   .Details__icon {
     color: $iconcolor;
     width: 2rem;

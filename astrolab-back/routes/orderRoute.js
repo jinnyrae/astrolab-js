@@ -81,7 +81,7 @@ module.exports = (app, db) => {
     }
   });
 
-  // Route pour modifier le status de paiement
+  // Route pour modifier le status de paiement> Stripe
   app.put('/api/v1/Orders/status', withAuth, async (req, res) => {
     const orderStatus = await orderModel.updateOrderStatus(
       req.body.id,
@@ -94,6 +94,20 @@ module.exports = (app, db) => {
       res.json({ status: 200, msg: 'Status mis à jour!', orderStatus });
     }
   });
+  // Route pour modifier le status de paiement> Stripe
+  app.put('/api/v1/Orders/status/admin', withAuthAdmin, async (req, res) => {
+    const orderStatus = await orderModel.updateOrderStatus(
+      req.body.id,
+      req.body.status,
+    );
+
+    if (orderStatus.code) {
+      res.json({ status: 500, msg: 'Erreur de modification du status!' });
+    } else {
+      res.json({ status: 200, msg: 'Status mis à jour!', orderStatus });
+    }
+  });
+
   // Route: tous les commandes
   app.get('/api/v1/Orders/all', withAuthAdmin, async (req, res) => {
     const orders = await orderModel.getAllOrders();

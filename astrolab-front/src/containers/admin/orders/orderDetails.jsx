@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  updatePaymentStatus,
+  updatePaymentStatusAdmin,
   getDetailedOrder,
   getOneOrder,
 } from '../../../api/order';
@@ -31,7 +31,7 @@ export const OrderDetails = ({ params }) => {
       .catch((error) => console.log(error));
   };
   const statusHandler = (newStatus) => {
-    updatePaymentStatus({ id: params.id, status: newStatus })
+    updatePaymentStatusAdmin({ id: params.id, status: newStatus })
       .then((res) => {
         if (res.status === 200) {
           findOrder();

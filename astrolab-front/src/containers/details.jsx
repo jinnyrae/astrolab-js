@@ -78,9 +78,12 @@ const Details = () => {
           }}
         />
       )}
-      <Link className="icon" to="/shop">
-        <IoPlayBackOutline className="Details__icon" />
-      </Link>
+      <div className="retour">
+        <IoPlayBackOutline className="Admin__icon" />
+        <Link to={'/admin/orderTable'} className="Admin__links">
+          Retour
+        </Link>
+      </div>
       {product !== null && (
         <div className="Details">
           <h2>{product.productName}</h2>

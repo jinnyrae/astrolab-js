@@ -16,6 +16,7 @@ export function insertOrder(data) {
       return error;
     });
 }
+
 // Gestion de paiement
 export function checkPayment(data) {
   const token = window.localStorage.getItem('3wa-project-token');
@@ -31,6 +32,7 @@ export function checkPayment(data) {
       return error;
     });
 }
+
 // Modification du status d'une commande
 export function updatePaymentStatus(data) {
   const token = window.localStorage.getItem('3wa-project-token');
@@ -47,6 +49,24 @@ export function updatePaymentStatus(data) {
       return error;
     });
 }
+
+// Modification du status d'une commande
+export function updatePaymentStatusAdmin(data) {
+  const token = window.localStorage.getItem('3wa-project-token');
+
+  return axios
+    .put(`${config.api_url}/api/v1/Orders/status/admin`, data, {
+      headers: { 'x-access-token': token },
+    })
+
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      return error;
+    });
+}
+
 // Récuperer toutes les commandes
 export function getAllOrders() {
   const token = window.localStorage.getItem('3wa-project-token');
@@ -77,6 +97,7 @@ export function getOneOrder(id) {
       return error;
     });
 }
+
 // Recuperer les commandes d'un utilisateur
 export function getUserOrders(id) {
   const token = window.localStorage.getItem('3wa-project-token');
@@ -92,6 +113,7 @@ export function getUserOrders(id) {
       return error;
     });
 }
+
 // Récuperer une commande détaillée
 export function getDetailedOrder(id) {
   const token = window.localStorage.getItem('3wa-project-token');

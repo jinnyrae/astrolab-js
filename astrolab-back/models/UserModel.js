@@ -47,6 +47,7 @@ class UserModel {
         return error;
       });
   }
+
   // get user avec son id
   static getUserById(id) {
     return db
@@ -82,6 +83,7 @@ class UserModel {
         return error;
       });
   }
+
   // get all users
   static getAllUsers(res) {
     return db
@@ -93,6 +95,7 @@ class UserModel {
         return error;
       });
   }
+
   // Update de la derniere connexion de l'utilisateur
   static updateConnexion(id) {
     return db
@@ -104,6 +107,7 @@ class UserModel {
         return error;
       });
   }
+
   // Delete account:
   static deleteUser(id) {
     return db
@@ -115,6 +119,7 @@ class UserModel {
         return error;
       });
   }
+
   //Modification du role d'un user
   static updateUserRole(req, id) {
     return db
