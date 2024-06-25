@@ -9,21 +9,25 @@ import { FaUserLarge } from 'react-icons/fa6';
 import { RiAdminFill } from 'react-icons/ri';
 import { FaAmericanSignLanguageInterpreting } from 'react-icons/fa';
 import { FaUserPlus } from 'react-icons/fa6';
+
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const user = useSelector(selectUser);
   const basket = useSelector(selectBasket);
   const [redirect, setRedirect] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
   const menuToggle = () => {
     setMenuOpen(!menuOpen);
   };
   //deconnexion d'un user
   const logout = () => {
-    //annulation du token
+    //annulation des token
     window.localStorage.removeItem('3wa-project-token');
     window.localStorage.removeItem('astrolab-basket');
+    window.location.reload();
     //on réinitialise le store de redux
     dispatch(logoutUser());
     setRedirect(true);

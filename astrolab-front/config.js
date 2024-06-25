@@ -1,4 +1,4 @@
 export const config = {
-  api_url: 'http://localhost:9000',
-  img_url: 'http://localhost:9000/images/',
+  api_url: 'http://localhost:9500',
+  img_url: 'http://localhost:9500/images/',
 };

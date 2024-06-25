@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import InfinitText from '../components/infinitText';
 import { displayAllProducts } from '../api/product';
 import ProductCard from '../components/product-card';
+import Reassurance from '../components/reassurance';
 
 const Shop = () => {
   const [allProducts, setAllProducts] = useState([]);
@@ -27,6 +28,7 @@ const Shop = () => {
           })}
         </ul>
       )}
+      <Reassurance />
     </section>
   );
 };
