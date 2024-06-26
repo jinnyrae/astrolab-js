@@ -104,12 +104,11 @@ const Profil = () => {
 
     updateUser(data, user.userInfo.id)
       .then((res) => {
+        setMsg(res.msg);
         if (res.status === 200) {
           const token = window.localStorage.getItem('3wa-project-token');
           let newUser = res.newUser;
-
           newUser.token = token;
-          setMsg(res.msg);
           dispatch(connectUser(newUser));
         } else {
           setError('Erreur de modification');
@@ -144,7 +143,7 @@ const Profil = () => {
       <h2 className="Profil__title">Mon Profil</h2>
       {error !== null && <p className="Profil__error">{error}</p>}
       {msg !== null && (
-        <p className="Profil__title" style={{ color: 'red' }}>
+        <p className="Profil__error" style={{ color: 'red' }}>
           {msg}
         </p>
       )}

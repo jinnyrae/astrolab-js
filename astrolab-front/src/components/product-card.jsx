@@ -16,7 +16,7 @@ const ProductCard = (props) => {
   const OnBasketClick = (actuelBasket, newProduct) => {
     let theQuantity = quantity === '' ? 1 : parseInt(quantity); //Set quantity à 1 par default
 
-    // Verfier la quantité , qu'elle existe et positive
+    // Verfier la quantité , elle existe et positive
     if (isNaN(theQuantity) || theQuantity <= 0) {
       setError('Veuillez saisir un chiffre');
     } else {
