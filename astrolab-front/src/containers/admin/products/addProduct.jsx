@@ -23,20 +23,21 @@ export const AddProduct = () => {
   const [imgFile, setImgFile] = useState(null);
   const [photoName, setPhotoName] = useState('');
   const [photoAlt, setPhotoAlt] = useState('');
-  const [redirect, setRedirect] = useState(false);
   const [error, setError] = useState(null);
+  const [msg, setMsg] = useState(null);
 
   const addOneProduct = (data) => {
     insertProduct(data)
       .then((res) => {
         if (res.status === 200) {
           // produit ajouté
+
           displayAllProducts()
             .then((responce) => {
               if (responce.status === 200) {
                 // mettre à jour le store
                 dispatch(uploadProducts(responce.result));
-                setRedirect(true);
+                setMsg(res.msg);
               }
             })
             .catch((error) => console.log(error));
@@ -104,9 +105,7 @@ export const AddProduct = () => {
       saveProduct();
     }
   };
-  if (redirect) {
-    return <Navigate to="/admin" />;
-  }
+
   return (
     <section>
       <h2>Ajouter un produit</h2>
@@ -117,7 +116,8 @@ export const AddProduct = () => {
         </Link>
       </div>
 
-      {error !== null && <p>{error}</p>}
+      {error !== null && <p className="Form__error">{error}</p>}
+      {msg !== null && <p className="Form__error">{msg}</p>}
       <form className="Admin__add" onSubmit={handleSubmit}>
         <input
           name="productName"

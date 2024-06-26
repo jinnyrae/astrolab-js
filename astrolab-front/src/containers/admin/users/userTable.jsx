@@ -5,22 +5,27 @@ import { useState, useEffect } from 'react';
 
 const UserTable = () => {
   const [allUsers, setAllUsers] = useState([]);
+  const [msg, setMsg] = useState(null);
 
   const handleStatus = (newStatus, id) => {
     updateUserRole(id, { role: newStatus })
       .then((res) => {
-        console.log(res);
+        if (res.status === 200) {
+          getAllUsers()
+            .then((responce) => {
+              if (responce.status === 200) {
+                console.log(responce);
+                setAllUsers(responce.data);
+                setMsg(res.msg);
+              }
+            })
+            .catch((error) => console.log(error));
+        }
       })
       .catch((error) => console.log(error));
   };
   useEffect(() => {
-    getAllUsers()
-      .then((res) => {
-        if (res.status === 200) {
-          setAllUsers(res.data);
-        }
-      })
-      .catch((error) => console.log(error));
+    handleStatus();
   }, []);
 
   return (
@@ -32,6 +37,7 @@ const UserTable = () => {
           Retour
         </Link>
       </div>
+      {msg !== null && <p className="Form__error">{msg}</p>}
       <div>
         <table className="Admin__table user">
           <thead>

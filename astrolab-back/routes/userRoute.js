@@ -91,6 +91,7 @@ module.exports = (app, db) => {
       }
     }
   });
+
   // Route de modification d'un utilisateur
 
   app.put('/api/v1/Users/update/:id', withAuth, async (req, res) => {
@@ -129,6 +130,7 @@ module.exports = (app, db) => {
       }
     }
   });
+
   // Route supprimer compt utilisateur:
   app.delete('/api/v1/Users/delete/:id', withAuth, async (req, res) => {
     const deleteUser = await userModel.deleteUser(req.params.id);
@@ -144,6 +146,7 @@ module.exports = (app, db) => {
       res.json({ status: 200, msg: 'Utilisateur supprimé!' });
     }
   });
+
   // Route pour recuperer un utilisateur par son id/Admin
   app.get('/api/v1/Users/:id', withAuthAdmin, async (req, res) => {
     const user = await userModel.getUserById(req.params.id);
@@ -156,6 +159,7 @@ module.exports = (app, db) => {
       res.json({ status: 200, result: user });
     }
   });
+
   //Route pour récuperer tous les utilisateur
 
   app.get('/api/v1/Users', withAuthAdmin, async (req, res) => {
@@ -169,6 +173,7 @@ module.exports = (app, db) => {
       res.json({ status: 200, result: users.length, data: users });
     }
   });
+
   //Route pour modifier le role d'un utilisateur
   app.put('/api/v1/Users/role/:id', withAuthAdmin, async (req, res, next) => {
     const userRole = await userModel.updateUserRole(req, req.params.id);
