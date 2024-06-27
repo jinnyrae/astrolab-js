@@ -7,7 +7,8 @@ import { AiOutlinePlusCircle } from 'react-icons/ai';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectBasket, updateBasket } from '../slices/basketSlice';
 import { IoPlayBackOutline } from 'react-icons/io5';
-
+import InfinitText from '../components/infinitText';
+import Reassurance from '../components/reassurance';
 const Details = () => {
   const basket = useSelector(selectBasket);
   const dispatch = useDispatch();
@@ -68,6 +69,7 @@ const Details = () => {
 
   return (
     <section className="Product__details">
+      <InfinitText />
       <h1>Details du Produit</h1>
       {basketMsg && (
         <BasketMsg
@@ -137,6 +139,7 @@ const Details = () => {
           <AiOutlinePlusCircle />
         </button>
       </form>
+      <Reassurance />
     </section>
   );
 };
