@@ -102,7 +102,9 @@ const EditProduct = (props) => {
     }
   };
   const handleSubmit = (e) => {
-    e.preventDefault();
+    if (e && e.preventDefault) {
+      e.preventDefault();
+    }
     setError(null);
     if (isNaN(stockQuantity) || isNaN(price) || isNaN(favorite)) {
       setError('Les champs prix et quantité doivent être des chiffres!');

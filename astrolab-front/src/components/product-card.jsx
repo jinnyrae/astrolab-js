@@ -43,6 +43,7 @@ const ProductCard = (props) => {
         dispatch(updateBasket(newBasket));
       }
       setBasketMsg(true);
+      setError('');
     }
   };
 
@@ -57,7 +58,7 @@ const ProductCard = (props) => {
           }}
         />
       )}
-      {error !== null && <p>{error}</p>}
+      {error !== null && <p className="Form__error">{error}</p>}
       <Link to={`/details/${props.product.id}`}>
         <div>
           <h3 className="Card__title">{props.product.productName}</h3>
