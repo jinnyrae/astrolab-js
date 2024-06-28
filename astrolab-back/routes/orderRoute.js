@@ -56,6 +56,7 @@ module.exports = (app, db) => {
       }); // id de la commande ajoutée
     }
   });
+
   // Rout de gestion de paiement
 
   app.post('/api/v1/Orders/payment', withAuth, async (req, res) => {

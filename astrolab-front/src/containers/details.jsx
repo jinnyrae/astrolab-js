@@ -7,7 +7,8 @@ import { AiOutlinePlusCircle } from 'react-icons/ai';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectBasket, updateBasket } from '../slices/basketSlice';
 import { IoPlayBackOutline } from 'react-icons/io5';
-
+import InfinitText from '../components/infinitText';
+import Reassurance from '../components/reassurance';
 const Details = () => {
   const basket = useSelector(selectBasket);
   const dispatch = useDispatch();
@@ -25,9 +26,9 @@ const Details = () => {
     if (isNaN(theQuantity) || theQuantity <= 0) {
       setError('Veuillez saisir un chiffre');
     } else {
-      let newBasket = JSON.parse(JSON.stringify(actuelBasket || []));
+      let newBasket = JSON.parse(JSON.stringify(actuelBasket || [])); //cloner le panier du store
 
-      // verifier si le produit exsiste dans le panier
+      // verifier si le produit exsiste déjà dans le panier
       if (newProduct) {
         const verifyProduct = newBasket.findIndex(
           (item) => item.id === newProduct.id,
@@ -68,6 +69,7 @@ const Details = () => {
 
   return (
     <section className="Product__details">
+      <InfinitText />
       <h1>Details du Produit</h1>
       {basketMsg && (
         <BasketMsg
@@ -118,7 +120,14 @@ const Details = () => {
           <p className="Details__table-history">{product.history}</p>
         </div>
       )}
-      {error !== null && <p>{error}</p>}
+      {error !== null && (
+        <p
+          className="Form__error"
+          style={{ paddingTop: '2rem', paddingBottom: '0' }}
+        >
+          {error}
+        </p>
+      )}
       <p className="Details__panier">Ajouter au panier</p>
       <form
         onSubmit={(e) => {
@@ -137,6 +146,7 @@ const Details = () => {
           <AiOutlinePlusCircle />
         </button>
       </form>
+      <Reassurance />
     </section>
   );
 };

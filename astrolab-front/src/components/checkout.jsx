@@ -8,9 +8,11 @@ import { selectUser } from '../slices/userSlice';
 const CheckOut = (props) => {
   const [error, setError] = useState(false);
   const [successRedirect, setSuccessRedirect] = useState(false);
+
   const user = useSelector(selectUser);
   const stripe = useStripe();
-  const elements = useElements(); // utilisation de la carte
+  const elements = useElements();
+
   const handlSubmit = async (e) => {
     e.preventDefault();
     if (!stripe || !elements) {

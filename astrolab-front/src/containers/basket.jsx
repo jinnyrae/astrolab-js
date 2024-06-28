@@ -32,10 +32,12 @@ const Basket = () => {
           }
         })
         .catch((error) => console.log(error));
+    } else {
+      setLoginRedirect(true);
     }
   };
 
-  //Fonction pour déduire un produit du panier
+  //Fonction pour déduire la quantité du produit du panier
   const deducetItem = (actuelBasket, product) => {
     let newBasket = JSON.parse(JSON.stringify(actuelBasket)); // Deep clone the object
 
@@ -48,7 +50,7 @@ const Basket = () => {
     window.localStorage.setItem('astrolab-basket', lsBasket); // modifier local storage et store
     dispatch(updateBasket(newBasket));
   };
-  // Function pour augmenter le nombre de produit
+  // Function pour augmenter la quantité de produit
   const addItem = (actuelBasket, product) => {
     let newBasket = JSON.parse(JSON.stringify(actuelBasket));
 

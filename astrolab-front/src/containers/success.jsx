@@ -12,11 +12,11 @@ const Success = () => {
   }, []);
   return (
     <section>
-      <h2>Astrolab Vous remercie !</h2>
+      <h2>Astrolab Vous Remercie !</h2>
       <div className="Success__back">
         <Link className="Success__link" to="/">
           <IoPlayBackOutline className="Success__icon" />
-          Retour
+          Home
         </Link>
       </div>
 
