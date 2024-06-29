@@ -20,7 +20,6 @@ class OrderModel {
 
   // Ajouter un order details
   static addOrderDetails(orderId, product) {
-    console.log('order', orderId, 'product', product);
     const total = parseInt(product.cartQuantity) * product.price;
     console.log('total', total);
     return db
@@ -29,11 +28,9 @@ class OrderModel {
         [orderId, product.id, product.cartQuantity, total],
       )
       .then((res) => {
-        console.log('res', res);
         return res;
       })
       .then((error) => {
-        console.log('error', error);
         return error;
       });
   }
