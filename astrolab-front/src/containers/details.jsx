@@ -36,9 +36,9 @@ const Details = () => {
 
         if (verifyProduct === -1) {
           // produit inexistant
-          let theProduct = JSON.parse(JSON.stringify(newProduct));
-          theProduct.cartQuantity = theQuantity;
-          let theBasket = [...newBasket, theProduct];
+          let theProduct = JSON.parse(JSON.stringify(newProduct)); // cloner le produit
+          theProduct.cartQuantity = theQuantity; //mettre à jour la quantité
+          let theBasket = [...newBasket, theProduct]; //mettre à jour le panier
           let localStorageBasket = JSON.stringify(theBasket);
 
           window.localStorage.setItem('astrolab-basket', localStorageBasket);
