@@ -21,7 +21,6 @@ class OrderModel {
   // Ajouter un order details
   static addOrderDetails(orderId, product) {
     const total = parseInt(product.cartQuantity) * product.price;
-    console.log('total', total);
     return db
       .query(
         'INSERT INTO OrderDetails (orderId, productId, quantity, total, createTimeStamp) VALUES (?, ?, ?, ?, NOW())',
