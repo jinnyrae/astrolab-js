@@ -11,7 +11,7 @@ const Payment = (props) => {
   );
   return (
     <section>
-      <h2>Payment</h2>
+      <h2>Paiement</h2>
       <p style={{ color: '#05074e' }}>Commande : {props.params.orderId}</p>
       <Elements stripe={stripePromise}>
         {/* se connecter avec stripe pour effectuer le paiement*/}

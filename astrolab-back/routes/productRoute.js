@@ -60,7 +60,7 @@ module.exports = (app, db) => {
     async (req, res, next) => {
       const product = await productModel.getOneProduct(req.params.id); // Recupération du produit à supprimer pour pouvoir supprimer l'image
 
-      if (product.code) {
+      if (!product) {
         res.json({ status: 500, msg: 'Server Error' });
       } else {
         const deleteProduct = await productModel.deleteProduct(req.params.id);
@@ -68,16 +68,9 @@ module.exports = (app, db) => {
         if (deleteProduct.code) {
           res.json({ status: 500, msg: 'Server Error' });
         } else {
-          if (product.photo !== 'no-pict.jpg') {
+          if (product.photo) {
             // il y a une photo
-            fs.unlink(`public/images/${product.photo}`, (error) => {
-              if (error) {
-                res.json({
-                  status: 500,
-                  msg: "L'image n'a pas pu être supprimé",
-                });
-              }
-            });
+            fs.unlink(`public/images/${product.photo}`, () => {});
             res.json({ status: 200, msg: 'Produit supprimé!' });
           } else {
             res.json({ status: 200, msg: 'Produit supprimé!' });

@@ -17,7 +17,7 @@ const Action = () => {
       .then((res) => {
         if (res.status === 200) {
           setMsg(res.msg);
-          displayAllProducts(res.result)
+          displayAllProducts()
             .then((responce) => {
               if (responce.status === 200) {
                 dispatch(uploadProducts(responce.result));

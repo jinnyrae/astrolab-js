@@ -44,6 +44,7 @@ const Basket = () => {
     const verifyProduct = newBasket.findIndex((item) => item.id === product.id);
 
     if (verifyProduct !== -1) {
+      //produit exsiste
       newBasket[verifyProduct].cartQuantity -= 1;
     }
     let lsBasket = JSON.stringify(newBasket);

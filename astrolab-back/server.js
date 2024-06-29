@@ -42,10 +42,6 @@ mysql
   })
   .then((db) => {
     console.log('Connected to database! ');
-    setInterval(async () => {
-      const res = await db.query;
-      ('SELECT 1');
-    }, 10000);
 
     app.get('/', async (req, res, next) => {
       res.json({ status: 200, msg: 'Database Astrolab 11' });
@@ -59,7 +55,7 @@ mysql
   })
   .catch((error) => console.log(error));
 
-const PORT = process.env.PORT || 9500;
+const PORT = 9500;
 app.listen(PORT, () => {
   console.log(`Serveur à l'ecoute sur le port ${PORT}`);
 });

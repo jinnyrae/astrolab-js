@@ -33,7 +33,6 @@ module.exports = (app, db) => {
             insertOrderId,
             product,
           );
-
           if (orderDetails.code) {
             res.json({
               status: 500,
@@ -43,7 +42,7 @@ module.exports = (app, db) => {
             totalSum += parseInt(product.cartQuantity) * safePrice; // total de produits aux panier * prix
             await orderModel.updateTotalSum(
               // mise à jour du prix du panier
-              newOrder.insertId,
+              insertOrderId,
               totalSum,
             );
           }
